@@ -28,7 +28,15 @@ public class Calculate {
 	public static double discriminant(double a, double b, double c) {
 		return (b * b) - (4 * (a * c)); 
 	}
-	public static double toImproperFrac(double bigNumber, double numerator, double denominator) {
-		
+	public static String toImproperFrac(int bigNumber, int numerator, int denominator) {
+		int topNum = (denominator * bigNumber) + numerator;
+		return topNum + "/" + denominator;
+	}
+	public static double absValue(double number) {
+		if(number < 0) {
+			return -number;
+		}else {
+			return number;
+		}
 	}
 }
