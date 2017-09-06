@@ -28,7 +28,7 @@ public class Calculate {
 	public static double discriminant(double a, double b, double c) {
 		return (b * b) - (4 * (a * c)); 
 	}
-	public static toImproperFrac(double bigNumber, double numerator, double denominator) {
+	public static double toImproperFrac(double bigNumber, double numerator, double denominator) {
 		
 	}
 }
