@@ -32,6 +32,16 @@ public class Calculate {
 		int topNum = (denominator * bigNumber) + numerator;
 		return topNum + "/" + denominator;
 	}
+	public static String toMixedNum(int numerator, int denominator) {
+		int bigNumber = numerator/denominator;
+		numerator = numerator % denominator;
+		return bigNumber + "_" + numerator + "/" + denominator;
+	}
+	public static String foil(int a, int b, int c, int d, String x) {
+		return "do nothing for now";
+	}
+		
+	
 	public static double absValue(double number) {
 		if(number < 0) {
 			return -number;
