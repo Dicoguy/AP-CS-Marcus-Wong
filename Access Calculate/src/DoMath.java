@@ -3,6 +3,7 @@
  * used to test the methods
  * in Calculate,java
  */
+//testing one two three
 public class DoMath {
 	public static void main(String args[]) {
 		System.out.println(Calculate.square(5));
