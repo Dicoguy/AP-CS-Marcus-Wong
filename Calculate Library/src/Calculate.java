@@ -8,21 +8,27 @@
 
 
 public class Calculate {
+	//takes an integer and squares it
 	public static int square(int num) {
 		return num * num;
 	}
+	//takes an integer and cubes it
 	public static int cube(int cubedNum) {
 		return cubedNum * cubedNum * cubedNum;
 	}
+	//takes two doubles and averages them
 	public static double average(double NumUno, double NumDos) {
 		return (NumUno + NumDos) / 2;
 	}
+	//takes THREE doubles and averages them
 	public static double average(double numUno, double numDos, double numTres) {
 		return (numUno + numDos + numTres) / 3;
 	}
+	//converts a degree value to radians
 	public static double toDegrees(double degrees) {
 		return degrees * (3.14159/180);
 	}
+	//converts
 	public static double toRadians(double radian) {
 		return radian * (180/3.14159);
 	}
@@ -39,7 +45,13 @@ public class Calculate {
 		return bigNumber + "_" + numerator + "/" + denominator;
 	}
 	public static String foil(int a, int b, int c, int d, String x) {
-		return "do nothing for now";
+		int firstNum = a * c;
+		int secondNum = (a*d) + (b*c);
+		int thirdNum = b*d;
+		return firstNum + x + "^2 + " + secondNum + x + " + " + thirdNum;
+	}
+	public static void Boolean(int firstNum, int secondNum) {
+		
 	}
 		
 	
