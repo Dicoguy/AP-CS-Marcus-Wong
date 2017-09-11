@@ -50,16 +50,44 @@ public class Calculate {
 		int thirdNum = b*d;
 		return firstNum + x + "^2 + " + secondNum + x + " + " + thirdNum;
 	}
-	public static void Boolean(int firstNum, int secondNum) {
-		
+	public static boolean isDivisibleBy(int firstNum, int secondNum) {
+		if(first Num % second Num == 0) {
+			return "true";
+		}else {
+			return "false";
+		}
 	}
-		
-	
+	public static double max(double numOne, double numTwo) {
+		if(numOne > numTwo) {
+			return numOne;
+		}else {
+			return numTwo;
+		}
+	}
+	public static double max(double numOne, double numTwo, double numThree) {
+		if(numOne > numTwo && numOne > numThree) {
+			return numOne;
+		}else if(numTwo > numOne && numTwo > numThree){
+			return numTwo;
+		}else if(numThree > numOne && numThree > numTwo) {
+			returnNumThree;
+		}
+	}	
+	public static double min(double numOne, double numTwo) {
+		if(numOne < numTwo) {
+			return numOne;
+		}else {
+			return numTwo;
+		}
+	}
 	public static double absValue(double number) {
 		if(number < 0) {
 			return -number;
 		}else {
 			return number;
 		}
+	}
+	public static double round2(double number) {
+		
 	}
 }
