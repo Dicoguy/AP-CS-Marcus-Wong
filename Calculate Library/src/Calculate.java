@@ -24,39 +24,45 @@ public class Calculate {
 	public static double average(double numUno, double numDos, double numTres) {
 		return (numUno + numDos + numTres) / 3;
 	}
-	//converts a degree value to radians
+	//converts a radian value to degrees
 	public static double toDegrees(double degrees) {
 		return degrees * (3.14159/180);
 	}
-	//converts
+	//converts a degree value to radians
 	public static double toRadians(double radian) {
 		return radian * (180/3.14159);
 	}
+	//calculates the discrimant when given the values
 	public static double discriminant(double a, double b, double c) {
 		return (b * b) - (4 * (a * c)); 
 	}
+	//concerts a mixed number to an improper fraction
 	public static String toImproperFrac(int bigNumber, int numerator, int denominator) {
 		int topNum = (denominator * bigNumber) + numerator;
 		return topNum + "/" + denominator;
 	}
+	//converts an improper fraction to a mixed number
 	public static String toMixedNum(int numerator, int denominator) {
 		int bigNumber = numerator/denominator;
 		numerator = numerator % denominator;
 		return bigNumber + "_" + numerator + "/" + denominator;
 	}
+	//converts a binomial multiplication form to the standard form
 	public static String foil(int a, int b, int c, int d, String x) {
 		int firstNum = a * c;
 		int secondNum = (a*d) + (b*c);
 		int thirdNum = b*d;
 		return firstNum + x + "^2 + " + secondNum + x + " + " + thirdNum;
 	}
+	//checks to see if one integer is evenly divisible by the other
 	public static boolean isDivisibleBy(int firstNum, int secondNum) {
-		if(first Num % second Num == 0) {
-			return "true";
+		if(firstNum % secondNum == 0) {
+			return true; 
 		}else {
-			return "false";
+			return false;
 		}
 	}
+	//compares two values and returns the bigger one
 	public static double max(double numOne, double numTwo) {
 		if(numOne > numTwo) {
 			return numOne;
@@ -64,15 +70,19 @@ public class Calculate {
 			return numTwo;
 		}
 	}
+	//compares three values and returns the biggest one
 	public static double max(double numOne, double numTwo, double numThree) {
+		double answer = 0;
 		if(numOne > numTwo && numOne > numThree) {
-			return numOne;
+			answer = numOne;
 		}else if(numTwo > numOne && numTwo > numThree){
-			return numTwo;
+			answer = numTwo;
 		}else if(numThree > numOne && numThree > numTwo) {
-			returnNumThree;
+			answer = numThree;
 		}
-	}	
+		return answer;
+	}
+	//compares two values and returns the smaller value
 	public static double min(double numOne, double numTwo) {
 		if(numOne < numTwo) {
 			return numOne;
@@ -80,6 +90,7 @@ public class Calculate {
 			return numTwo;
 		}
 	}
+	//returns the absolute value of the given number
 	public static double absValue(double number) {
 		if(number < 0) {
 			return -number;
@@ -87,7 +98,8 @@ public class Calculate {
 			return number;
 		}
 	}
-	public static double round2(double number) {
+	public static double round2(double decimal) {
 		
 	}
+	
 }
