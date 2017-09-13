@@ -3,9 +3,9 @@
  * used to test the methods
  * in Calculate,java
  */
-//testing one two three
 public class DoMath {
 	public static void main(String args[]) {
+		
 		System.out.println(Calculate.square(5));
 		System.out.println(Calculate.cube(6));
 		System.out.println(Calculate.average(2,5));
@@ -21,7 +21,10 @@ public class DoMath {
 		System.out.println(Calculate.max(4,2));
 		System.out.println(Calculate.max(4,7,3));
 		System.out.println(Calculate.min(4,2));
-		//System.out.println(Calculate.round2(23.45));
+		System.out.println(Calculate.round2(23.4667));
+		
+		//System.out.println(Calculate.exponent(2,2));
+		//System.out.println(Calculate.factorial(4));
 		
 	}
 }
