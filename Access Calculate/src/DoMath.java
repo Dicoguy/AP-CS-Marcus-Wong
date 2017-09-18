@@ -21,9 +21,9 @@ public class DoMath {
 		System.out.println(Calculate.max(4,2));
 		System.out.println(Calculate.max(4,7,3));
 		System.out.println(Calculate.min(4,2));
-		System.out.println(Calculate.round2(23.4667));
+		System.out.println(Calculate.round2(23.467));
 		
-		System.out.println(Calculate.exponent(2,2));
+		//System.out.println(Calculate.exponent(2,2));
 		//System.out.println(Calculate.factorial(4));
 		
 	}
