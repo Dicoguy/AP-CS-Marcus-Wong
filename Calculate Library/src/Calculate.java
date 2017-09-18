@@ -100,13 +100,21 @@ public class Calculate {
 	}
 	public static double round2(double decimal) {
 		double thousand = decimal * 100;
-		int takeNum = (int) thousand;
-		int lastNum = takeNum % 10;
-		if(lastNum >= 5) {
-			return decimal + .001 * (10-lastNum);
+		int lastNum = thousand % 10;
+		if(thousand > 0) {
+			if(thousand % 10 >= 5) {
+				thousand = thousand - lastNum;
+				thousand = thousand + 10;
+				thousand = thousand / 1000;
+			}
 		}else {
-			return decimal -.001 * lastNum;
-		}
+			if(thousand % 10 <= 5) {
+				thousand = thousand - lastNum;
+				thousand = thousand - 10;
+				thousand = thousand / 1000;
+			}
+		return thousand;
+	}
 	}
 	//raises a double to a positive int and returns a double
 	public static double exponent(double base, int power) {
@@ -115,17 +123,13 @@ public class Calculate {
 		}
 		return base;
 	}
-}
-	//public static int factorial(int number) {
-		//int sum = 1;
-		//for(int i = 1; i <= number; i++) {
-			//sum *= i;
-		//}
-		//return sum;
-	//}
 	
-	//public static int isPrime(int number) {
-		//isDivisibleBy
-	//}
-		
-//}
+	public static int factorial(int number) {
+		int sum = 1;
+		for(int i = 1; i <= number; i++) {
+			sum *= i;
+		}
+		return sum;
+	}
+	
+	
