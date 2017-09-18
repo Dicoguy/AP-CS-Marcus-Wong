@@ -103,26 +103,27 @@ public class Calculate {
 		int takeNum = (int) thousand;
 		int lastNum = takeNum % 10;
 		if(lastNum >= 5) {
-			return decimal + .001 * (10-lastNum);
+			return decimal + .01 * (10-lastNum);
 		}else {
-			return decimal -.001 * lastNum;
+			return decimal -.01 * lastNum;
 		}
 	}
 	//raises a double to a positive int and returns a double
 	public static double exponent(double base, int power) {
 		for(int i = 0; i < power - 1; i++) {
-			base *= base;
+			base *= base; 
 		}
 		return base;
 	}
+ 
+	public static int factorial(int number) {
+		int sum = 1;
+		for(int i = 1; i <= number; i++) {
+			sum *= i;
+		}
+		return sum;
+	}
 }
-	//public static int factorial(int number) {
-		//int sum = 1;
-		//for(int i = 1; i <= number; i++) {
-			//sum *= i;
-		//}
-		//return sum;
-	//}
 	
 	//public static int isPrime(int number) {
 		//isDivisibleBy
