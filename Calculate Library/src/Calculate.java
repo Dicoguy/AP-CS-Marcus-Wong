@@ -99,35 +99,30 @@ public class Calculate {
 		}
 	}
 	public static double round2(double decimal) {
-		int thousand = (int)decimal * 1000;
-		double answer = 0.0;
-		int lastNum = thousand % 10;
+		double thousand = decimal * 100;
+		double lastNum = thousand % 1;
 		if(thousand > 0) {
-			if(lastNum >= 5) {
-				thousand = thousand - lastNum;
-				thousand = thousand + 10;
-				
-				answer = thousand / 100.0;
-				return answer;
-			}                             
-		}else if(lastNum <= 5) {
+			if(thousand % 1 >= 0.5) {
+				thousand = thousand + 1;
+			}
 			thousand = thousand - lastNum;
-			thousand = thousand - 10;
-			answer = thousand / 100.0;
-			return answer;
+		}else {
+			if(lastNum <= -0.5) {
+			     	thousand = thousand - 1;
+			}
+			thousand = thousand - lastNum;
 		}	
-	}
+		thousand = thousand / 100;
+		return thousand;
+	}	
 
 	//raises a double to a positive int and returns a double
 	public static double exponent(double base, int power) {
-		for(int i = 0; i < power - 1; i++) {
-			base *= base;
-		}
-		return base;
+			for(int i = 0; i < power - 1; i++) {
+				base *= base;
+			}
+			return base;
 	}
-
-	
-
 	
 	public static int factorial(int number) {
 		int sum = 1;
@@ -136,8 +131,15 @@ public class Calculate {
 		}
 		return sum;
 	}
-	
 
+	public static boolean isPrime(int number) {
+		boolean prime = true;
+		for(int i = 2; i < number; i++) {
+			if(isDivisibleBy(number, i)) {
+				prime = false;
+			}
+		}
+		return prime;
+	}
 }
-
 	
