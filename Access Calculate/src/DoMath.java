@@ -33,7 +33,7 @@ public class DoMath {
 		System.out.println("factorial: " + Calculate.factorial(5));
 		System.out.println("isPrime: " + Calculate.isPrime(5));
 		System.out.println("gcf: " + Calculate.gcf(6,4));
-		//System.out.println("squareRoot: " + Calculate.gcf(4));
+		System.out.println("squareRoot: " + Calculate.sqrt(4));
 
 	}
 }

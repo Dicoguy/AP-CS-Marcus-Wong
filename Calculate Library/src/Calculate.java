@@ -117,7 +117,7 @@ public class Calculate {
 		return thousand;
 	}	
 
-	//raises a double to a positive int and returns a double
+	//raises a double to a positive integer and returns a double
 	public static double exponent(double base, int power) {
 			for(int i = 0; i < power - 1; i++) {
 				base *= base;
@@ -132,7 +132,7 @@ public class Calculate {
 		}
 		return sum;
 	}
-	//takes a integer and returns wheter or not it is prime
+	//takes a integer and returns whether or not it is prime
 	public static boolean isPrime(int number) {
 		boolean prime = true;
 		for(int i = 2; i < number; i++) {
@@ -153,6 +153,16 @@ public class Calculate {
 			}
 		}
 		return gcf;
+	}
+	public static double sqrt(double number) {
+		double guess = 0;
+		double poop = 0.1;
+		while(round2(guess*guess) != number) {
+			guess = 0.5 * (number/guess + guess);
+			guess += 0.1;
+			
+		}
+		return guess;
 	}
 }
 	
