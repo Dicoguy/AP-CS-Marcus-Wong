@@ -98,30 +98,31 @@ public class Calculate {
 			return number;
 		}
 	}
+	//takes a double and rounds it to the tens place
 	public static double round2(double decimal) {
 		double thousand = decimal * 100;
-		int lastNum = thousand % 10;
+		double lastNum = thousand % 1;
 		if(thousand > 0) {
-			if(thousand % 10 >= 5) {
-				thousand = thousand - lastNum;
-				thousand = thousand + 10;
-				thousand = thousand / 1000;
+			if(thousand % 1 >= 0.5) {
+				thousand = thousand + 1;
 			}
+			thousand = thousand - lastNum;
 		}else {
-			if(thousand % 10 <= 5) {
-				thousand = thousand - lastNum;
-				thousand = thousand - 10;
-				thousand = thousand / 1000;
+			if(lastNum <= -0.5) {
+			     	thousand = thousand - 1;
 			}
+			thousand = thousand - lastNum;
+		}	
+		thousand = thousand / 100;
 		return thousand;
-	}
-	}
+	}	
+
 	//raises a double to a positive int and returns a double
 	public static double exponent(double base, int power) {
-		for(int i = 0; i < power - 1; i++) {
-			base *= base;
-		}
-		return base;
+			for(int i = 0; i < power - 1; i++) {
+				base *= base;
+			}
+			return base;
 	}
 	
 	public static int factorial(int number) {
@@ -131,5 +132,27 @@ public class Calculate {
 		}
 		return sum;
 	}
-	
+	//takes a integer and returns wheter or not it is prime
+	public static boolean isPrime(int number) {
+		boolean prime = true;
+		for(int i = 2; i < number; i++) {
+			if(isDivisibleBy(number, i)) {
+				prime = false;
+			}
+		}
+		return prime;
+	}
+	//finds the greatest common factor(gcf) of two numbers
+	public static int gcf (int numOne, int numTwo) {
+		int gcf = 1;
+		for (int i = 1; i <= min(numOne, numTwo); i++) {
+			if (isDivisibleBy(numOne, i) && isDivisibleBy(numTwo, i)) {
+				if (gcf < i) {
+					gcf = i;
+				}
+			}
+		}
+		return gcf;
+	}
+}
 	
