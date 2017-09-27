@@ -58,7 +58,7 @@ public class Calculate {
 	public static boolean isDivisibleBy(int firstNum, int secondNum) {
 		if(firstNum % secondNum == 0) {
 			return true; 
-		}else {
+		}else{
 			return false;
 		}
 	}
@@ -119,18 +119,26 @@ public class Calculate {
 
 	//raises a double to a positive integer and returns a double
 	public static double exponent(double base, int power) {
+		if(power) < 0) {
+			throw new IllegalArgumentException("Can't do negative exponents. Sorry.");
+		}else {
 			for(int i = 0; i < power - 1; i++) {
 				base *= base;
 			}
 			return base;
+		}	
 	}
 	
 	public static int factorial(int number) {
 		int sum = 1;
-		for(int i = 1; i <= number; i++) {
-			sum *= i;
+		if(number < 0) {
+			throw new IllegalArgumentException("Stop trying to break my program you can't enter negative factorials you butt");
+		}else {
+			for(int i = 1; i <= number; i++) {
+				sum *= i;
+			}
+			return sum;
 		}
-		return sum;
 	}
 	//takes a integer and returns whether or not it is prime
 	public static boolean isPrime(int number) {
@@ -156,13 +164,17 @@ public class Calculate {
 	}
 	public static double sqrt(double number) {
 		double guess = 0;
-		double poop = 0.1;
-		while(round2(guess*guess) != number) {
-			guess = 0.5 * (number/guess + guess);
+		double sqrt = 0.1;
+		if(number < 0) {
+			throw new IllegalArgumentException("The Square Root of" + number + "is imaginary you butt");
+		}else {
+			while(round2(guess*guess) != number) {
+			sqrt = 0.5 * (number/guess + guess);
 			guess += 0.1;
 			
 		}
-		return guess;
+		return round2(sqrt);
+		}	
 	}
 }
 	
