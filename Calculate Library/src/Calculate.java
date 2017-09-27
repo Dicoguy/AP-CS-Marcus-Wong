@@ -119,7 +119,7 @@ public class Calculate {
 
 	//raises a double to a positive integer and returns a double
 	public static double exponent(double base, int power) {
-		if(power) < 0) {
+		if(power < 0) {
 			throw new IllegalArgumentException("Can't do negative exponents. Sorry.");
 		}else {
 			for(int i = 0; i < power - 1; i++) {
@@ -128,7 +128,7 @@ public class Calculate {
 			return base;
 		}	
 	}
-	
+//finds the factorial of a number
 	public static int factorial(int number) {
 		int sum = 1;
 		if(number < 0) {
@@ -162,19 +162,38 @@ public class Calculate {
 		}
 		return gcf;
 	}
+//calculates the square root of a number
 	public static double sqrt(double number) {
 		double guess = 0;
 		double sqrt = 0.1;
 		if(number < 0) {
-			throw new IllegalArgumentException("The Square Root of" + number + "is imaginary you butt");
+			throw new IllegalArgumentException("The Square Root of" + number + " is imaginary");
 		}else {
-			while(round2(guess*guess) != number) {
+			while(round2(sqrt*sqrt) != number) {
 			sqrt = 0.5 * (number/guess + guess);
 			guess += 0.1;
-			
 		}
 		return round2(sqrt);
 		}	
+	}
+	
+	public static String quadForm(int a, int b, int c) {
+		double discr = Calculate.discriminant(a,b,c);
+		double rootOne = (((-b) + Calculate.sqrt(discr)) / (2*a));
+		double rootTwo = (((-b) - Calculate.sqrt(discr)) / (2*a));
+		double small = Calculate.min(rootOne, rootTwo);
+		double big = Calculate.max(rootOne, rootTwo);
+		if(Calculate.discriminant(a,b,c) < 0){
+			return "no real roots";
+		}
+		if(rootOne == rootTwo) {
+			String empty = "";
+			double answer = Calculate.round2(rootOne);
+			return empty + answer;
+		}else {
+			String empty2 = "";
+			return empty2 + small + big;
+		}
 	}
 }
 	
