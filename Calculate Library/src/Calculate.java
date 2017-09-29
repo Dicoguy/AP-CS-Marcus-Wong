@@ -132,7 +132,7 @@ public class Calculate {
 	public static int factorial(int number) {
 		int sum = 1;
 		if(number < 0) {
-			throw new IllegalArgumentException("Stop trying to break my program you can't enter negative factorials you butt");
+			throw new IllegalArgumentException("Can't accept negative exponents. Such as shame");
 		}else {
 			for(int i = 1; i <= number; i++) {
 				sum *= i;
@@ -167,7 +167,7 @@ public class Calculate {
 		double guess = 0;
 		double sqrt = 0.1;
 		if(number < 0) {
-			throw new IllegalArgumentException("The Square Root of" + number + " is imaginary");
+			throw new IllegalArgumentException("The Square Root of" + number + " is imaginary, what a travesty");
 		}else {
 			while(round2(sqrt*sqrt) != number) {
 			sqrt = 0.5 * (number/guess + guess);
@@ -176,14 +176,14 @@ public class Calculate {
 		return round2(sqrt);
 		}	
 	}
-	
+	//uses the coefficients of the standard form of a quadratic function to return the roots, if any
 	public static String quadForm(int a, int b, int c) {
 		double discr = Calculate.discriminant(a,b,c);
 		double rootOne = (((-b) + Calculate.sqrt(discr)) / (2*a));
 		double rootTwo = (((-b) - Calculate.sqrt(discr)) / (2*a));
 		double small = Calculate.min(rootOne, rootTwo);
 		double big = Calculate.max(rootOne, rootTwo);
-		if(Calculate.discriminant(a,b,c) < 0){
+		if(discr < 0){
 			return "no real roots";
 		}
 		if(rootOne == rootTwo) {
@@ -192,7 +192,7 @@ public class Calculate {
 			return empty + answer;
 		}else {
 			String empty2 = "";
-			return empty2 + small + big;
+			return empty2 + small + " and " + big;
 		}
 	}
 }
