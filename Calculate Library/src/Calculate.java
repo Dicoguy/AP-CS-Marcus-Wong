@@ -3,7 +3,7 @@
  * 2nd Period
  * This program contains the methods needed 
  * to perform the math operations in
- * DoMath.java
+ * DoMath.java, whatever they may be.
  */
 
 
@@ -56,6 +56,9 @@ public class Calculate {
 	}
 	//checks to see if one integer is evenly divisible by the other
 	public static boolean isDivisibleBy(int firstNum, int secondNum) {
+		if(secondNum == 0) {
+			throw new IllegalArgumentException("Can't divide by zero.");
+		}
 		if(firstNum % secondNum == 0) {
 			return true; 
 		}else{
@@ -83,7 +86,7 @@ public class Calculate {
 		return answer;
 	}
 	//compares two values and returns the smaller value
-	public static double min(double numOne, double numTwo) {
+	public static double min(int numOne, int numTwo) {
 		if(numOne < numTwo) {
 			return numOne;
 		}else {
@@ -132,7 +135,7 @@ public class Calculate {
 	public static int factorial(int number) {
 		int sum = 1;
 		if(number < 0) {
-			throw new IllegalArgumentException("Can't accept negative exponents. Such as shame");
+			throw new IllegalArgumentException("Can't accept negative exponents. Such a shame");
 		}else {
 			for(int i = 1; i <= number; i++) {
 				sum *= i;
@@ -176,24 +179,28 @@ public class Calculate {
 		return round2(sqrt);
 		}	
 	}
+	//overloaded min method that accepts doubles for quadorm instead of ints
+	public static double min(double numOne, double numTwo) {
+		if(numOne < numTwo) {
+			return numOne;
+		}else {
+			return numTwo;
+		}
+	}
 	//uses the coefficients of the standard form of a quadratic function to return the roots, if any
 	public static String quadForm(int a, int b, int c) {
+		String answer = "";
 		double discr = Calculate.discriminant(a,b,c);
-		double rootOne = (((-b) + Calculate.sqrt(discr)) / (2*a));
-		double rootTwo = (((-b) - Calculate.sqrt(discr)) / (2*a));
-		double small = Calculate.min(rootOne, rootTwo);
-		double big = Calculate.max(rootOne, rootTwo);
+		double rootOne = Calculate.round2((((-b) + Calculate.sqrt(discr)) / (2*a)));
+		double rootTwo = Calculate.round2((((-b) - Calculate.sqrt(discr)) / (2*a)));
 		if(discr < 0){
 			return "no real roots";
+		}else if(rootOne == rootTwo) {
+			answer = answer + rootOne;
+		}else{
+			answer = answer + Calculate.min(rootOne, rootTwo) + " and " + Calculate.max(rootOne, rootTwo);
 		}
-		if(rootOne == rootTwo) {
-			String empty = "";
-			double answer = Calculate.round2(rootOne);
-			return empty + answer;
-		}else {
-			String empty2 = "";
-			return empty2 + small + " and " + big;
-		}
+		return answer;
 	}
 }
 	
