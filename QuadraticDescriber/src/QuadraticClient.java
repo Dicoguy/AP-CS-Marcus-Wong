@@ -12,6 +12,7 @@ import java.util.*;
 public class QuadraticClient {
 	public static void main(String args[]) {
 		Scanner userInput = new Scanner(System.in);
+		System.out.println("Welcome to the Quadratic Describer of Doom and Despair. Enter Your Numbers of Doom");
 		System.out.println("Provide values for coefficients a, b, and c");
 		System.out.print("a: ");
 		double a = userInput.nextDouble();
