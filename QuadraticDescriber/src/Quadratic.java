@@ -17,16 +17,15 @@ public class Quadratic {
 		}
 			answer += "Opens: Up \n";
 		String axis = "Axis of Symmetry: ";	
-		double AOS = (-b / (2 * a));
+		double AOS = round2((-b / (2 * a)));
 		answer += axis + AOS + "\n";
 		
-		double vertex = ((a * (AOS * AOS)) + (b * AOS) + c);
+		double vertex = round2(((a * (AOS * AOS)) + (b * AOS) + c));
 		answer += "Vertex: <" + AOS + "," + vertex + "> \n";
 		
-		String roots = quadForm(a, b, c);
-		answer += "x-intercepts<s>: " + roots + "\n";
+		//String roots = quadForm(a, b, c);
+		//answer += "x-intercepts<s>: " + roots + "\n";
 		
-		double yInt = c;
 		answer += "y-intercept: " + c + "\n";
 		return answer;
 	}
