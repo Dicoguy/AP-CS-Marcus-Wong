@@ -35,6 +35,6 @@ public class DoMath {
 		System.out.println("gcf: " + Calculate.gcf(6,4));
 		System.out.println("squareRoot: " + Calculate.sqrt(5));
 		//Part 4
-		System.out.println("QuadForm: " + Calculate.quadForm(1, 6, 1));
+		System.out.println("QuadForm: " + Calculate.quadForm(2, 4, 2));
 	}
 }

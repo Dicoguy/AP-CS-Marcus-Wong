@@ -23,8 +23,15 @@ public class Quadratic {
 		double vertex = round2(((a * (AOS * AOS)) + (b * AOS) + c));
 		answer += "Vertex: <" + AOS + "," + vertex + "> \n";
 		
-		//String roots = quadForm(a, b, c);
-		//answer += "x-intercepts<s>: " + roots + "\n";
+		String roots = quadForm(a, b, c);
+		answer += "x-intercepts<s>: ";
+		
+		if (!(roots.equals("no real roots"))) {
+			answer += roots;
+		} else {
+			answer += "None";
+		}
+		
 		
 		answer += "y-intercept: " + c + "\n";
 		return answer;
@@ -66,15 +73,15 @@ public class Quadratic {
 		double guess = 0;
 		double sqrt = 0.1;
 		if(number < 0) {
-			throw new IllegalArgumentException("The Square Root of" + number + " is imaginary, what a travesty");
-		}else {
-			while(round2(sqrt*sqrt) != number) {
+			throw new IllegalArgumentException("The Square Root of" + number + " is imaginary");
+		}
+		while(round2(sqrt*sqrt) != number) {
 			sqrt = 0.5 * (number/guess + guess);
 			guess += 0.1;
 		}
 		return round2(sqrt);
 		}	
-	}
+	
 	public static double round2(double decimal) {
 		double thousand = decimal * 100;
 		double lastNum = thousand % 1;
