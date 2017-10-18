@@ -27,11 +27,10 @@ public class Quadratic {
 		answer += "x-intercepts<s>: ";
 		
 		if (!(roots.equals("no real roots"))) {
-			answer += roots;
+			answer += roots + "\n";
 		} else {
-			answer += "None";
+			answer += "None" + "\n";
 		}
-		
 		
 		answer += "y-intercept: " + c + "\n";
 		return answer;
@@ -39,7 +38,10 @@ public class Quadratic {
 	public static String quadForm(double a, double b, double c) {
 		String answer = "";
 		double discr = discriminant(a,b,c);
-		double rootOne = round2((((-b) + sqrt(discr)) / (2*a)));
+		if(discr < 0) {
+			return "no real roots";
+		}
+		double rootOne = round2((((-b) + sqrt((discr)) / (2*a))));
 		double rootTwo = round2((((-b) - sqrt(discr)) / (2*a)));
 		if(discr < 0){
 			return "no real roots";
