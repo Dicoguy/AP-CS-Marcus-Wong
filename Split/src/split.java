@@ -1,32 +1,31 @@
-// Your task Part 0
-//String.split();
-//It's a method that acts on a string, <StringName>.split(<String sp>);
-//Where sp is the string where the string splits
-//And it returns an array
-// Example: "I like apples!".split(" "); 
-//	it will split at spaces and return an array of ["I","like","apples!"]
-// Example 2: "I really like really red apples".split("really")
-//	it will split at the word "really" and return an array of ["I "," like "," red apples!"]
-//play around with String.split! 
-//What happens if you "I reallyreally likeapples".split("really") ?
-
-
-
-//Your task Part 1:
-/*Write a method that take in a string like "applespineapplesbreadlettustomatobaconmayohambreadcheese" describing a sandwich
-* use String.split to split up the sandwich by the word "bread" and return what's in the middle of the sandwich and ignores what's on the outside
-* What if it's a fancy sandwich with multiple pieces of bread?
-*/
-
-
-//Your task Part 2:
-/*Write a method that take in a string like "apples pineapples bread lettus tomato bacon mayo ham bread cheese" describing a sandwich
-* use String.split to split up the sandwich at the spaces, " ", and return what's in the middle of the sandwich and ignores what's on the outside
-* Again, what if it's a fancy sandwich with multiple pieces of bread?
-*/
+import java.util.*;
 public class split {
 
 	public static void main(String[] args) {
-		String[] array ="I like apples!".split("");
+		//Part 0
+		System.out.println(Arrays.toString("I like apples!".split(" ")));
+		System.out.println(Arrays.toString("I HATE those dumb apples!".split(" ")));
+		System.out.println(Arrays.toString("The cow exclaimed in a suprised tone MEOW".split(" ")));
+		//Part 1
+		String sandwich = "apples bread pineapples bread lettus bread tomato bacon bread mayo ham bread cheese";
+		System.out.println(sandwichMiddle(sandwich));
+	}
+	public static String sandwichMiddle(String sandwich) {
+		String[] toppings = new String[sandwich.split("bread").length];
+		
+		String middle = ""; 
+		
+		for (int i = 0; i < toppings.length; i++) {
+			toppings[i] = sandwich.split("bread")[i];
+		}
+		
+		for (int i = 2; i < toppings.length-1; i++) {
+			middle += toppings[i] + " ";
+		}
+
+		return middle;
 	}
 }
+
+
+
