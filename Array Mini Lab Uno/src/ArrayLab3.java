@@ -8,8 +8,11 @@ public class ArrayLab3 {
 		
 		int appendNum = 200;
 		int[] appendArr = appened(a1,appendNum);
-		
+	
 		int removeIdx = 5;
+		int[] removeArr = remove(a2, removeIdx);
+		
+		
 		
 	}
 	public static int[] sum(int[] arr1, int[] arr2) {
@@ -30,7 +33,11 @@ public class ArrayLab3 {
 	public static int[] remove(int[] arr, int idx) {
 		int[] returnArr = new int[arr.length - 1];
 		for(int i = 0; i <= (idx - 1); i++) {
-			
+			returnArr[i] = arr[i];
 		}
+		for(int i = (idx + 1); i <= returnArr.length; i++) {
+			returnArr[i] = arr[i];
+		}
+		return returnArr;
 	}
 }
