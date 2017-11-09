@@ -1,4 +1,5 @@
-
+//Marcus Wong
+//11/8/17
 public class Magpie2 {
 
 	//Get a default greeting and return a greeting	
@@ -24,12 +25,14 @@ public class Magpie2 {
 				|| statement.indexOf("Mr.") >= 0
 				|| statement.indexOf("Ms.") >= 0) {
 			response = "He or She Sounds like a wonderful teacher";
-		} else if(statement.indexOf("No") >= 0){
+		} else if(statement.indexOf("Your're a chatbot") >= 0){
 			response = "Ok I see how it is";
 		}else if(statement.indexOf("How are you doing today?") >= 0) {
 			response = "Yes";
 		}else if(statement.indexOf("I am hungry") >= 0) {
 			response = "Since I am in the computer hunger is a foreign concept to me";	
+		}else if(statement.trim().length() == 0) {
+			response = "Please say something";
 		} else {
 			response = getRandomResponse();
 		}
