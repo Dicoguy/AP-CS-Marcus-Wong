@@ -6,9 +6,13 @@ public class FracCalc {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String expression = input.nextLine();
-        System.out.println(produceAnswer(expression));
-
+        do {
+        	String expression = input.nextLine();
+        	if(expression.equals("quit")) {
+        		break;
+        	}
+        	System.out.println(produceAnswer(expression));
+        }while(true);
     }
     
     // ** IMPORTANT ** DO NOT DELETE THIS FUNCTION.  This function will be used to test your code
@@ -24,9 +28,30 @@ public class FracCalc {
         String firstFrac = equation[0];
         String operand = equation[1];
         String secondFrac = equation[2];
-        return secondFrac;
+        return parseString(secondFrac);
     }
+    
 
     // TODO: Fill in the space below with any helper methods that you think you will need
-    
+    public static String parseString(String fraction) {
+    	String whole = "0";
+    	String numerator = "0";
+    	String denominator = "1";
+    	
+    	if(fraction.contains("_")) {
+    		String[] splitfraction = fraction.split("_");
+    		whole = splitfraction[0];
+    		fraction = splitfraction[1];
+    	}
+    	if(fraction.contains("/")) {
+    		String[] splitFraction2 = fraction.split("/");
+    		numerator = splitFraction2[0];
+    		denominator = splitFraction2[1];
+    	}
+    	if(!(fraction.contains("_")) && !(fraction.contains("/" ))) {
+    		whole = fraction;
+    	}
+    	String[] returnArray = {whole, numerator, denominator};
+    	return "whole:" + whole + " numerator:" + numerator + " denominator:" + denominator;
+    }
 }
