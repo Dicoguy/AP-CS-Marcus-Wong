@@ -28,12 +28,62 @@ public class FracCalc {
         String firstFrac = equation[0];
         String operand = equation[1];
         String secondFrac = equation[2];
-        return parseString(secondFrac);
+        String[] splitFrac1 = parseString(firstFrac);
+        String[] splitFrac2 = parseString(secondFrac);
+        
+        int[] firstFracInt = new int[3];
+        int[] secondFracInt = new int[3];
+        
+        for(int i = 0; i < splitFrac1.length; i++) {
+        	firstFracInt[i] = Integer.parseInt(splitFrac1[i]);
+        	secondFracInt[i] = Integer.parseInt(splitFrac2[i]);
+        }
+        
+        if(firstFracInt[0] != 0) {
+        	toImproperFrac(firstFracInt);
+        }
+        if(secondFracInt[0] != 0) {
+        	toImproperFrac(secondFracInt);
+        }
+        
+        if(operand.equals("+") || operand.equals("-")) {
+        	addSubtract(firstFracInt, secondFracInt, operand);
+        }else if(operand.equals("*") || operand.equals("/")) {
+        	multiplyDivide(firstFracInt, secondFracInt, operand);
+        }
+        return "whole:" + splitFrac2[0] + " numerator:" + splitFrac2[1] + " denominator:" + splitFrac2[2];
+        
+        
     }
     
+    public static void multiplyDivide(int[] firstFracInt, int[] secondFracInt, String operand) {
+    	int numerator = 0;
+    	int denominator = 0;
+		if(operand.equals("*")) {
+			numerator = firstFracInt[0] * secondFracInt[0];
+			denominator = firstFracInt[1] * secondFracInt[1];
+		}
+			numerator =
+	}
+
+	public static void addSubtract(int[] firstFracInt, int[] secondFracInt, String operand) {
+		
+		
+	}
+
+	public static int[] toImproperFrac(int[] mixedFrac) {
+    	int bigNumber = mixedFrac[0];
+		int numerator = mixedFrac[1];
+		int denominator = mixedFrac[2];
+		int topNum = (denominator * bigNumber) + numerator;
+		int[] returnArray = new int[2];
+		returnArray[0] = topNum;
+		returnArray[1] = denominator;
+		return returnArray;
+	}
 
     // TODO: Fill in the space below with any helper methods that you think you will need
-    public static String parseString(String fraction) {
+    public static String[] parseString(String fraction) {
     	String whole = "0";
     	String numerator = "0";
     	String denominator = "1";
@@ -52,6 +102,7 @@ public class FracCalc {
     		whole = fraction;
     	}
     	String[] returnArray = {whole, numerator, denominator};
-    	return "whole:" + whole + " numerator:" + numerator + " denominator:" + denominator;
+    	return returnArray;
+    	
     }
 }
