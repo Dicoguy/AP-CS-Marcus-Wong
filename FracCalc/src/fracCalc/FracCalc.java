@@ -39,38 +39,59 @@ public class FracCalc {
         	secondFracInt[i] = Integer.parseInt(splitFrac2[i]);
         }
         
+        int[] improperFracOne = new int[2];
+        int[] improperFracTwo = new int[2];
+        
         if(firstFracInt[0] != 0) {
-        	toImproperFrac(firstFracInt);
+        	improperFracOne = toImproperFrac(firstFracInt);
         }
         if(secondFracInt[0] != 0) {
-        	toImproperFrac(secondFracInt);
+        	improperFracTwo = toImproperFrac(secondFracInt);
         }
         
+        int[] result = new int[2];
+        int[] multiplyDivide = new int[2];
         if(operand.equals("+") || operand.equals("-")) {
-        	addSubtract(firstFracInt, secondFracInt, operand);
+        	 result = addSubtract(improperFracOne, improperFracTwo, operand);
+        	 return result[0] + "/" + result[1];
         }else if(operand.equals("*") || operand.equals("/")) {
-        	multiplyDivide(firstFracInt, secondFracInt, operand);
+        	 result = multiplyDivide(improperFracOne, improperFracTwo, operand);
+        	 return result[0] + "/" + result[1];
+        }else {
+        	 return "not a valid operator";
         }
-        return "whole:" + splitFrac2[0] + " numerator:" + splitFrac2[1] + " denominator:" + splitFrac2[2];
-        
+   
         
     }
     
-    public static void multiplyDivide(int[] firstFracInt, int[] secondFracInt, String operand) {
-    	int numerator = 0;
-    	int denominator = 0;
+    public static int[] multiplyDivide(int[] firstFracInt, int[] secondFracInt, String operand) {
+    	int[] returnArray = new int[2];
 		if(operand.equals("*")) {
-			numerator = firstFracInt[0] * secondFracInt[0];
-			denominator = firstFracInt[1] * secondFracInt[1];
+			returnArray[0] = firstFracInt[0] * secondFracInt[0];
+			returnArray[1] = firstFracInt[1] * secondFracInt[1];
+			return returnArray;
+		}else {
+			returnArray[0] = firstFracInt[0] * secondFracInt[1];
+			returnArray[1] = firstFracInt[1] * secondFracInt[0];
+			return returnArray;
 		}
-			numerator =
+			
 	}
 
-	public static void addSubtract(int[] firstFracInt, int[] secondFracInt, String operand) {
-		
-		
+	public static int[] addSubtract(int[] firstFracInt, int[] secondFracInt, String operand) {
+		int[] returnArray = new int[2];
+		int commonDenominator = firstFracInt[1] * secondFracInt[1];
+		if(operand.equals("+")) {
+			returnArray[0] = (secondFracInt[1] * firstFracInt[0]) + (firstFracInt[1] * secondFracInt[0]);
+			returnArray[1] = commonDenominator;
+			return returnArray;
+		}else {
+			returnArray[0] = (secondFracInt[1] * firstFracInt[0]) - (firstFracInt[1] * secondFracInt[0]);
+			returnArray[1] = commonDenominator;
+			return returnArray;
+		}
 	}
-
+	
 	public static int[] toImproperFrac(int[] mixedFrac) {
     	int bigNumber = mixedFrac[0];
 		int numerator = mixedFrac[1];
