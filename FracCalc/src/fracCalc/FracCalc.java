@@ -1,5 +1,6 @@
 package fracCalc;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class FracCalc {
@@ -38,19 +39,16 @@ public class FracCalc {
         	firstFracInt[i] = Integer.parseInt(splitFrac1[i]);
         	secondFracInt[i] = Integer.parseInt(splitFrac2[i]);
         }
-        
+       
         int[] improperFracOne = new int[2];
         int[] improperFracTwo = new int[2];
         
-        if(firstFracInt[0] != 0) {
-        	improperFracOne = toImproperFrac(firstFracInt);
-        }
-        if(secondFracInt[0] != 0) {
-        	improperFracTwo = toImproperFrac(secondFracInt);
-        }
+        improperFracOne = toImproperFrac(firstFracInt[0],firstFracInt[1],firstFracInt[2]);
+        improperFracTwo = toImproperFrac(secondFracInt[0],secondFracInt[1],secondFracInt[2]);
+        	
+        System.out.println("after improper int" + Arrays.toString(improperFracOne) + Arrays.toString(improperFracTwo));
         
         int[] result = new int[2];
-        int[] multiplyDivide = new int[2];
         if(operand.equals("+") || operand.equals("-")) {
         	 result = addSubtract(improperFracOne, improperFracTwo, operand);
         	 return result[0] + "/" + result[1];
@@ -92,15 +90,20 @@ public class FracCalc {
 		}
 	}
 	
-	public static int[] toImproperFrac(int[] mixedFrac) {
-    	int bigNumber = mixedFrac[0];
-		int numerator = mixedFrac[1];
-		int denominator = mixedFrac[2];
-		int topNum = (denominator * bigNumber) + numerator;
+	public static int[] toImproperFrac(int whole, int numerator, int denominator) {
+    	
 		int[] returnArray = new int[2];
-		returnArray[0] = topNum;
-		returnArray[1] = denominator;
-		return returnArray;
+		
+		if(whole != 0) {
+			int topNum = (denominator * whole) + numerator;
+			returnArray[0] = topNum;
+			returnArray[1] = denominator;
+			return returnArray;
+		}else {
+			returnArray[0] = numerator;
+			returnArray[1] = denominator;
+			return returnArray;
+		}
 	}
 
     // TODO: Fill in the space below with any helper methods that you think you will need
