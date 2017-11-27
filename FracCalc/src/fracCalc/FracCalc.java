@@ -64,30 +64,33 @@ public class FracCalc {
     
     public static int[] multiplyDivide(int[] firstFracInt, int[] secondFracInt, String operand) {
     	int[] returnArray = new int[2];
+    	
 		if(operand.equals("*")) {
 			returnArray[0] = firstFracInt[0] * secondFracInt[0];
 			returnArray[1] = firstFracInt[1] * secondFracInt[1];
-			return returnArray;
+			
 		}else {
 			returnArray[0] = firstFracInt[0] * secondFracInt[1];
 			returnArray[1] = firstFracInt[1] * secondFracInt[0];
-			return returnArray;
 		}
+		
+		return returnArray;
 			
 	}
-
+    //-3_3/4 - -2_2/4
 	public static int[] addSubtract(int[] firstFracInt, int[] secondFracInt, String operand) {
 		int[] returnArray = new int[2];
 		int commonDenominator = firstFracInt[1] * secondFracInt[1];
+		
 		if(operand.equals("+")) {
 			returnArray[0] = (secondFracInt[1] * firstFracInt[0]) + (firstFracInt[1] * secondFracInt[0]);
 			returnArray[1] = commonDenominator;
-			return returnArray;
+		
 		}else {
 			returnArray[0] = (secondFracInt[1] * firstFracInt[0]) - (firstFracInt[1] * secondFracInt[0]);
 			returnArray[1] = commonDenominator;
-			return returnArray;
 		}
+		return returnArray;
 	}
 	
 	public static int[] toImproperFrac(int whole, int numerator, int denominator) {
@@ -95,6 +98,12 @@ public class FracCalc {
 		int[] returnArray = new int[2];
 		
 		if(whole != 0) {
+			if(whole < 0) {
+				int topNum = (denominator * whole) + -numerator;
+				returnArray[0] = topNum;
+				returnArray[1] = denominator;
+				return returnArray;
+			}
 			int topNum = (denominator * whole) + numerator;
 			returnArray[0] = topNum;
 			returnArray[1] = denominator;
