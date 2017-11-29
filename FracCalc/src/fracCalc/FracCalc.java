@@ -46,7 +46,7 @@ public class FracCalc {
         improperFracOne = toImproperFrac(firstFracInt[0],firstFracInt[1],firstFracInt[2]);
         improperFracTwo = toImproperFrac(secondFracInt[0],secondFracInt[1],secondFracInt[2]);
         	
-        System.out.println("after improper int" + Arrays.toString(improperFracOne) + Arrays.toString(improperFracTwo));
+        //System.out.println("after improper int" + Arrays.toString(improperFracOne) + Arrays.toString(improperFracTwo));
         
         int[] result = new int[2];
         if(operand.equals("+") || operand.equals("-")) {
@@ -77,7 +77,7 @@ public class FracCalc {
 		return returnArray;
 			
 	}
-    //-3_3/4 - -2_2/4
+    
 	public static int[] addSubtract(int[] firstFracInt, int[] secondFracInt, String operand) {
 		int[] returnArray = new int[2];
 		int commonDenominator = firstFracInt[1] * secondFracInt[1];
@@ -114,8 +114,39 @@ public class FracCalc {
 			return returnArray;
 		}
 	}
-
-    // TODO: Fill in the space below with any helper methods that you think you will need
+	public int[] reduceFrac(int[] fraction) {
+		
+	}
+	public static int gcf (int numOne, int numTwo) {
+		int gcf = 1;
+		for (int i = 1; i <= min(numOne, numTwo); i++) {
+			if (isDivisibleBy(numOne, i) && isDivisibleBy(numTwo, i)) {
+				if (gcf < i) {
+					gcf = i;
+				}
+			}
+		}
+		return gcf;
+	}
+	
+	public static boolean isDivisibleBy(int firstNum, int secondNum) {
+		if(secondNum == 0) {
+			throw new IllegalArgumentException("Can't divide by zero.");
+		}
+		if(firstNum % secondNum == 0) {
+			return true; 
+		}else{
+			return false;
+		}
+	}
+	public static double min(int numOne, int numTwo) {
+		if(numOne < numTwo) {
+			return numOne;
+		}else {
+			return numTwo;
+		}
+	}
+	
     public static String[] parseString(String fraction) {
     	String whole = "0";
     	String numerator = "0";
