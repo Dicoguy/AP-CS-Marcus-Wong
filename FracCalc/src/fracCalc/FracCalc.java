@@ -46,15 +46,17 @@ public class FracCalc {
         improperFracOne = toImproperFrac(firstFracInt[0],firstFracInt[1],firstFracInt[2]);
         improperFracTwo = toImproperFrac(secondFracInt[0],secondFracInt[1],secondFracInt[2]);
         	
-        //System.out.println("after improper int" + Arrays.toString(improperFracOne) + Arrays.toString(improperFracTwo));
         
         int[] result = new int[2];
+        int[] reducedResult = new int[2];
         if(operand.equals("+") || operand.equals("-")) {
         	 result = addSubtract(improperFracOne, improperFracTwo, operand);
-        	 return result[0] + "/" + result[1];
+        	 reducedResult = reduceFrac(result);
+        	 return reducedResult[0] + "/" + reducedResult[1];
         }else if(operand.equals("*") || operand.equals("/")) {
         	 result = multiplyDivide(improperFracOne, improperFracTwo, operand);
-        	 return result[0] + "/" + result[1];
+        	 reducedResult = reduceFrac(result);
+        	 return reducedResult[0] + "/" + reducedResult[1];
         }else {
         	 return "not a valid operator";
         }
@@ -114,9 +116,25 @@ public class FracCalc {
 			return returnArray;
 		}
 	}
-	public int[] reduceFrac(int[] fraction) {
+	public static int[] reduceFrac(int[] fraction) {
 		
+		int gcf = gcf(fraction[0],fraction[1]);
+		int numerator = fraction[0] / gcf;
+		int denominator = fraction[1] / gcf;
+		if(numerator > denominator) {
+			toMixedNum(numerator, denominator);
+		}
+		
+		int[] returnArray = {numerator, denominator};
+		return returnArray;
 	}
+	
+	public static String toMixedNum(int numerator, int denominator) {
+		int bigNumber = numerator/denominator;
+		numerator = numerator % denominator;
+		return bigNumber + "_" + numerator + "/" + denominator;
+	}
+	
 	public static int gcf (int numOne, int numTwo) {
 		int gcf = 1;
 		for (int i = 1; i <= min(numOne, numTwo); i++) {
