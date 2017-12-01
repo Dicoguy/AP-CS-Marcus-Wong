@@ -51,9 +51,11 @@ public class FracCalc {
        
         if(operand.equals("+") || operand.equals("-")) {
         	 result = addSubtract(improperFracOne, improperFracTwo, operand);
+        	 System.out.println(result[0] + " " + result[1]);
         	 return reduceFrac(result[0], result[1]);
         }else if(operand.equals("*") || operand.equals("/")) {
         	 result = multiplyDivide(improperFracOne, improperFracTwo, operand);
+        	 System.out.println(result[0] + " " + result[1]);
         	 return reduceFrac(result[0], result[1]);
         	
         }else {
@@ -122,6 +124,10 @@ public class FracCalc {
 		int returnNumerator = numerator / gcf;
 		int returnDenominator = denominator / gcf;
 		
+		if(numerator < 0 && denominator < 0) {
+			numerator = -numerator;
+			denominator = -denominator;
+		}
 		
 		if(numerator == 0) {
 			result += 0;
@@ -132,7 +138,7 @@ public class FracCalc {
 			return result;
 		}
 		
-		if(numerator > denominator) {
+		if(numerator > denominator ) {
 			String mixedNum = toMixedNum(returnNumerator, returnDenominator);
 			if(mixedNum.charAt(2) == '0') {
 				result += mixedNum.charAt(0);
@@ -146,8 +152,13 @@ public class FracCalc {
 	}
 	
 	public static String toMixedNum(int numerator, int denominator) {
+		String result = "";
 		int bigNumber = numerator/denominator;
 		numerator = numerator % denominator;
+		if(numerator == 0) {
+			result += bigNumber;
+			return result;
+		}
 		return bigNumber + "_" + numerator + "/" + denominator;
 	}
 	
