@@ -48,19 +48,18 @@ public class FracCalc {
         	
         
         int[] result = new int[2];
-        int[] reducedResult = new int[2];
+       
         if(operand.equals("+") || operand.equals("-")) {
         	 result = addSubtract(improperFracOne, improperFracTwo, operand);
-        	 reducedResult = reduceFrac(result);
-        	 return reducedResult[0] + "/" + reducedResult[1];
+        	 return reduceFrac(result[0], result[1]);
         }else if(operand.equals("*") || operand.equals("/")) {
         	 result = multiplyDivide(improperFracOne, improperFracTwo, operand);
-        	 reducedResult = reduceFrac(result);
-        	 return reducedResult[0] + "/" + reducedResult[1];
+        	 return reduceFrac(result[0], result[1]);
+        	
         }else {
         	 return "not a valid operator";
         }
-   
+       
         
     }
     
@@ -116,17 +115,34 @@ public class FracCalc {
 			return returnArray;
 		}
 	}
-	public static int[] reduceFrac(int[] fraction) {
+	
+	public static String reduceFrac(int numerator,int denominator) {
+		String result = "";
+		int gcf = gcf(numerator,denominator);
+		int returnNumerator = numerator / gcf;
+		int returnDenominator = denominator / gcf;
 		
-		int gcf = gcf(fraction[0],fraction[1]);
-		int numerator = fraction[0] / gcf;
-		int denominator = fraction[1] / gcf;
-		if(numerator > denominator) {
-			toMixedNum(numerator, denominator);
+		
+		if(numerator == 0) {
+			result += 0;
+			return result;
+		}
+		if(denominator == 1) {
+			result += returnNumerator;
+			return result;
 		}
 		
-		int[] returnArray = {numerator, denominator};
-		return returnArray;
+		if(numerator > denominator) {
+			String mixedNum = toMixedNum(returnNumerator, returnDenominator);
+			if(mixedNum.charAt(2) == '0') {
+				result += mixedNum.charAt(0);
+				return result;
+			}
+			return mixedNum;
+		}
+		
+		
+		return returnNumerator + "/" + returnDenominator;
 	}
 	
 	public static String toMixedNum(int numerator, int denominator) {
