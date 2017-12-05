@@ -51,9 +51,11 @@ public class FracCalc {
        
         if(operand.equals("+") || operand.equals("-")) {
         	 result = addSubtract(improperFracOne, improperFracTwo, operand);
+        	 System.out.println(result[0] + " " + result[1]);
         	 return reduceFrac(result[0], result[1]);
         }else if(operand.equals("*") || operand.equals("/")) {
         	 result = multiplyDivide(improperFracOne, improperFracTwo, operand);
+        	 System.out.println(result[0] + " " + result[1]);
         	 return reduceFrac(result[0], result[1]);
         	
         }else {
@@ -118,15 +120,35 @@ public class FracCalc {
 	
 	public static String reduceFrac(int numerator,int denominator) {
 		String result = "";
+		
 		int gcf = gcf(numerator,denominator);
 		int returnNumerator = numerator / gcf;
 		int returnDenominator = denominator / gcf;
-		
-		
+		System.out.println(returnNumerator + " " + returnDenominator);
 		if(numerator == 0) {
 			result += 0;
 			return result;
 		}
+		
+		if(numerator < 0) {
+			denominator = -denominator;
+			numerator = -numerator;
+		}
+		
+		if(returnNumerator == returnDenominator) {
+			result += "1";
+			return result;
+		}
+		
+		if(numerator == denominator) {
+			result += "1";
+		}
+		
+		if(numerator < 0 && denominator < 0) {
+		   numerator = -numerator;
+		   denominator = -denominator;
+		}
+		
 		if(denominator == 1) {
 			result += returnNumerator;
 			return result;
@@ -134,7 +156,8 @@ public class FracCalc {
 		
 		if(numerator > denominator) {
 			String mixedNum = toMixedNum(returnNumerator, returnDenominator);
-			if(mixedNum.charAt(2) == '0') {
+			
+			if(mixedNum.charAt(0) == '0') {
 				result += mixedNum.charAt(0);
 				return result;
 			}
@@ -146,15 +169,36 @@ public class FracCalc {
 	}
 	
 	public static String toMixedNum(int numerator, int denominator) {
+		int gcf = gcf(numerator,denominator);
+		int returnNumerator = numerator / gcf;
+		int returnDenominator = denominator / gcf;
+		String result = "";
 		int bigNumber = numerator/denominator;
 		numerator = numerator % denominator;
+		
+		if(numerator < 0 && denominator < 0) {
+			numerator = -numerator;
+			denominator = -denominator;
+		}
+		if(numerator < 0 && bigNumber < 0) {
+			numerator = -numerator;
+		}
+		if(denominator < 0 && bigNumber < 0) {
+		    denominator = -denominator;
+		}
+		if(numerator == 0) {
+			result += bigNumber;
+			return result;
+		}
+		
 		return bigNumber + "_" + numerator + "/" + denominator;
 	}
 	
-	public static int gcf (int numOne, int numTwo) {
+	public static int gcf(int num1, int num2) {
 		int gcf = 1;
-		for (int i = 1; i <= min(numOne, numTwo); i++) {
-			if (isDivisibleBy(numOne, i) && isDivisibleBy(numTwo, i)) {
+		
+		for (int i = 1; i <= min(num1, num2); i++) {
+			if (isDivisibleBy(num1, i) && isDivisibleBy(num2, i)) {
 				if (gcf < i) {
 					gcf = i;
 				}
