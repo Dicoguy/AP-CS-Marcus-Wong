@@ -130,6 +130,7 @@ public class FracCalc {
 			return result;
 		}
 		
+		
 		if(numerator < 0) {
 			denominator = -denominator;
 			numerator = -numerator;
@@ -144,10 +145,7 @@ public class FracCalc {
 			result += "1";
 		}
 		
-		if(numerator < 0 && denominator < 0) {
-		   numerator = -numerator;
-		   denominator = -denominator;
-		}
+		
 		
 		if(denominator == 1) {
 			result += returnNumerator;
@@ -169,9 +167,7 @@ public class FracCalc {
 	}
 	
 	public static String toMixedNum(int numerator, int denominator) {
-		int gcf = gcf(numerator,denominator);
-		int returnNumerator = numerator / gcf;
-		int returnDenominator = denominator / gcf;
+	
 		String result = "";
 		int bigNumber = numerator/denominator;
 		numerator = numerator % denominator;
@@ -196,7 +192,8 @@ public class FracCalc {
 	
 	public static int gcf(int num1, int num2) {
 		int gcf = 1;
-		
+		num1 = absValue(num1);
+		num2 = absValue(num2);
 		for (int i = 1; i <= min(num1, num2); i++) {
 			if (isDivisibleBy(num1, i) && isDivisibleBy(num2, i)) {
 				if (gcf < i) {
@@ -205,6 +202,13 @@ public class FracCalc {
 			}
 		}
 		return gcf;
+	}
+	public static int absValue(int operand) {
+		if (operand < 0) {
+			return -operand;
+		} else {
+			return operand;
+		}
 	}
 	
 	public static boolean isDivisibleBy(int firstNum, int secondNum) {
