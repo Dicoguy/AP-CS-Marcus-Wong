@@ -1,3 +1,6 @@
+//Marcus Wong
+//2nd Period
+
 package fracCalc;
 
 import java.util.Arrays;
@@ -124,7 +127,8 @@ public class FracCalc {
 		int gcf = gcf(numerator,denominator);
 		int returnNumerator = numerator / gcf;
 		int returnDenominator = denominator / gcf;
-		System.out.println(returnNumerator + " " + returnDenominator);
+		
+		
 		if(numerator == 0) {
 			result += 0;
 			return result;
@@ -136,10 +140,12 @@ public class FracCalc {
 			numerator = -numerator;
 		}
 		
+		
 		if(returnNumerator == returnDenominator) {
 			result += "1";
 			return result;
 		}
+	
 		
 		if(numerator == denominator) {
 			result += "1";
@@ -148,15 +154,16 @@ public class FracCalc {
 		
 		
 		if(denominator == 1) {
-			result += returnNumerator;
+			result += numerator;
 			return result;
 		}
+		System.out.println(toMixedNum(returnNumerator, returnDenominator));
 		
 		if(numerator > denominator) {
 			String mixedNum = toMixedNum(returnNumerator, returnDenominator);
 			
 			if(mixedNum.charAt(0) == '0') {
-				result += mixedNum.charAt(0);
+				result += mixedNum.substring(2);
 				return result;
 			}
 			return mixedNum;
@@ -186,7 +193,10 @@ public class FracCalc {
 			result += bigNumber;
 			return result;
 		}
-		
+		if(denominator < 0 && numerator > 0) {
+			denominator = -denominator;
+			numerator = -numerator;
+		}
 		return bigNumber + "_" + numerator + "/" + denominator;
 	}
 	
