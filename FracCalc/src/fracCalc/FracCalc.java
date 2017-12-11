@@ -1,6 +1,9 @@
+//Marcus Wong
+//2nd Period
+
 package fracCalc;
 
-import java.util.Arrays;
+
 import java.util.Scanner;
 
 public class FracCalc {
@@ -120,28 +123,47 @@ public class FracCalc {
 	
 	public static String reduceFrac(int numerator,int denominator) {
 		String result = "";
+		
 		int gcf = gcf(numerator,denominator);
 		int returnNumerator = numerator / gcf;
 		int returnDenominator = denominator / gcf;
 		
-		if(numerator < 0 && denominator < 0) {
-			numerator = -numerator;
-			denominator = -denominator;
-		}
 		
 		if(numerator == 0) {
 			result += 0;
 			return result;
 		}
-		if(denominator == 1) {
-			result += returnNumerator;
-			return result;
+		
+		
+		if(numerator < 0) {
+			denominator = -denominator;
+			numerator = -numerator;
 		}
 		
-		if(numerator > denominator ) {
+		
+		if(returnNumerator == returnDenominator) {
+			result += "1";
+			return result;
+		}
+	
+		
+		if(numerator == denominator) {
+			result += "1";
+		}
+		
+		
+		
+		if(denominator == 1) {
+			result += numerator;
+			return result;
+		}
+		System.out.println(toMixedNum(returnNumerator, returnDenominator));
+		
+		if(numerator > denominator) {
 			String mixedNum = toMixedNum(returnNumerator, returnDenominator);
-			if(mixedNum.charAt(2) == '0') {
-				result += mixedNum.charAt(0);
+			
+			if(mixedNum.charAt(0) == '0') {
+				result += mixedNum.substring(2);
 				return result;
 			}
 			return mixedNum;
@@ -152,26 +174,51 @@ public class FracCalc {
 	}
 	
 	public static String toMixedNum(int numerator, int denominator) {
+	
 		String result = "";
 		int bigNumber = numerator/denominator;
 		numerator = numerator % denominator;
+		
+		if(numerator < 0 && denominator < 0) {
+			numerator = -numerator;
+			denominator = -denominator;
+		}
+		if(numerator < 0 && bigNumber < 0) {
+			numerator = -numerator;
+		}
+		if(denominator < 0 && bigNumber < 0) {
+		    denominator = -denominator;
+		}
 		if(numerator == 0) {
 			result += bigNumber;
 			return result;
 		}
+		if(denominator < 0 && numerator > 0) {
+			denominator = -denominator;
+			numerator = -numerator;
+		}
 		return bigNumber + "_" + numerator + "/" + denominator;
 	}
 	
-	public static int gcf (int numOne, int numTwo) {
+	public static int gcf(int num1, int num2) {
 		int gcf = 1;
-		for (int i = 1; i <= min(numOne, numTwo); i++) {
-			if (isDivisibleBy(numOne, i) && isDivisibleBy(numTwo, i)) {
+		num1 = absValue(num1);
+		num2 = absValue(num2);
+		for (int i = 1; i <= min(num1, num2); i++) {
+			if (isDivisibleBy(num1, i) && isDivisibleBy(num2, i)) {
 				if (gcf < i) {
 					gcf = i;
 				}
 			}
 		}
 		return gcf;
+	}
+	public static int absValue(int operand) {
+		if (operand < 0) {
+			return -operand;
+		} else {
+			return operand;
+		}
 	}
 	
 	public static boolean isDivisibleBy(int firstNum, int secondNum) {
