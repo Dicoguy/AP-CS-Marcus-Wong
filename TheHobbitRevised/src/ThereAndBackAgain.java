@@ -23,14 +23,14 @@ public class ThereAndBackAgain
 		Traveler[] party1 = {frodo, sam, gimli};
 		for(Traveler trav: party1) {
 			trav.travel(50);
-			System.out.println(trav.getName() + "has traveled" + trav.getDistanceTraveled());
+			System.out.println(trav.getName() + " has traveled " + trav.getDistanceTraveled() + " miles");
 		}
 		
 		
 		
 		
 		System.out.println();
-		System.out.println("\n\n\nPART 2:  \n");
+		System.out.println("\nPART 2:  \n");
 
 		String[] dwarfNames = {"Fili", "Kili", "Dori", "Ori", "Nori", "Balin", "Dwalin", 
 				               "Oin", "Gloin", "Bifur", "Bofur", "Bombur", "Thorin"};
@@ -43,14 +43,9 @@ public class ThereAndBackAgain
 		
 		// Finally, call the allTravel method passing it party2 and 100 (representing
 		// the 100 miles that party2 has traveled together.  
-		allTravel(party2, 100);
-
-
-		
-		
+		System.out.println(allTravel(party2, 100));
 	}
 
-	
 	// The createParty method accepts an ArrayList of Travelers and a String[] of 
 	// dwarf names. This method will always add a new Hobbit named "Bilbo" and a      
 	// new Wizard named "Gandalf" whose color is "Grey" to the ArrayList.
@@ -76,8 +71,8 @@ public class ThereAndBackAgain
 		String travels = "";
 		for(Traveler trav: party) {
 			trav.travel(miles);
-			travels += trav.getName() + "has traveled" + trav.getDistanceTraveled();
+			travels += trav.getName() + " has traveled " + trav.getDistanceTraveled() + " miles \n";
 		}
 		return travels;
-	}
+	}	
 }
