@@ -26,11 +26,11 @@ public class Calculate {
 	}
 	//converts a radian value to degrees
 	public static double toDegrees(double degrees) {
-		return degrees * (3.14159/180);
+		return degrees * (180 /3.14159);
 	}
 	//converts a degree value to radians
 	public static double toRadians(double radian) {
-		return radian * (180/3.14159);
+		return radian * (3.14159 / 180);
 	}
 	//calculates the discrimant when given the values
 	public static double discriminant(double a, double b, double c) {
@@ -122,14 +122,23 @@ public class Calculate {
 
 	//raises a double to a positive integer and returns a double
 	public static double exponent(double base, int power) {
-		if(power < 0) {
-			throw new IllegalArgumentException("Can't do negative exponents. Sorry.");
-		}else {
+		double changedBase = base;
+		double result;
+		
+		if (power < 0) {
+			throw new IllegalArgumentException("The exponent can't be negative.");
+		}
+		
+		if (power == 0) {
+			result = base;
+			
+		} else {
 			for(int i = 0; i < power - 1; i++) {
-				base *= base;
+				changedBase *= base;
 			}
-			return base;
-		}	
+			result = changedBase;
+		}
+		return result;
 	}
 //finds the factorial of a number
 	public static int factorial(int number) {
