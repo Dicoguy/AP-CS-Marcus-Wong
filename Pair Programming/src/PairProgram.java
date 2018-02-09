@@ -18,5 +18,6 @@ public class PairProgram {
 			if(num % 2 == 0) {
 				sum += num;
 			}
+		}
+	}
 }
-	
