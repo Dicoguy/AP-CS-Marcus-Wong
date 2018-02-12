@@ -5,9 +5,9 @@
  */
 
 public class RectangularPrism {
-	private int length;
-	private int width;
-	public RectangularPrism(int height, int length, int width){
+	private double length;
+	private double width;
+	public RectangularPrism(double height, double length, double width){
 		super(height);
 		this.length = length;
 		this.width = width;

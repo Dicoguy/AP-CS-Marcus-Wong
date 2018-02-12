@@ -4,10 +4,10 @@
  * Provide a constructor and the methods required by its abstract superclass.  
  */
 
-public class Cylinder 
-{
-	
-	
-	
-	
+public class Cylinder {
+	private double radius;
+	public Cylinder(double rad) {
+		super(height);
+		this.radius = rad;
+	}
 }

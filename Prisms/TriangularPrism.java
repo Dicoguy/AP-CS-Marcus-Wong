@@ -11,10 +11,10 @@
 
 
 public class TriangularPrism {
-	private int sideA;
-	private int sideB;
-	private int sideC;
-	public TriangularPrism(int height, int a, int b, int c) {
+	private double sideA;
+	private double sideB;
+	private double sideC;
+	public TriangularPrism(double height, double a, double b, double c) {
 		super(height);
 		this.sideA = a;
 		this.sideB = b;
