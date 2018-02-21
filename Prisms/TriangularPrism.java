@@ -10,7 +10,7 @@
  */
 
 
-public class TriangularPrism {
+public class TriangularPrism extends Prism{
 	private double sideA;
 	private double sideB;
 	private double sideC;
@@ -20,5 +20,7 @@ public class TriangularPrism {
 		this.sideB = b;
 		this.sideC = c;
 	}
-	
+	public double calcAreaOfBase() {
+		
+	}
 }
