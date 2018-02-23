@@ -12,12 +12,13 @@ public class RectangularPrism extends Prism{
 		this.length = length;
 		this.width = width;
 	}
-	public double calcAreaOfBase(double height, double length) {
-		return (length*width);
-	}
 	
 	public double calcPerimeter() {
-		
+		return (2 * length) + (2 * width);
+	}
+	
+	public double calcAreaOfBase() {
+		return length * width;
 	}
 }
 

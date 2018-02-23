@@ -11,10 +11,10 @@ public class Cylinder extends Prism{
 		this.radius = rad;
 	}
 	public double calcAreaOfBase() {
-		
+		return radius * radius * Math.PI;
 	}
 	
 	public  double calcPerimeter() {
-		
+		return 2 * Math.PI * radius;
 	}
 }

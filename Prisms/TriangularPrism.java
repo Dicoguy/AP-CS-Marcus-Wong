@@ -14,13 +14,19 @@ public class TriangularPrism extends Prism{
 	private double sideA;
 	private double sideB;
 	private double sideC;
-	public TriangularPrism(double height, double a, double b, double c) {
+	
+	public TriangularPrism( double a, double b, double c, double height) {
 		super(height);
 		this.sideA = a;
 		this.sideB = b;
 		this.sideC = c;
 	}
+	
 	public double calcAreaOfBase() {
-		
+		double halfPerim = calcPerimeter() * 0.5;
+		return Math.sqrt((halfPerim * (halfPerim - sideA) * (halfPerim - sideB) * (halfPerim - sideC)));
+	}
+	public double calcPerimeter() {
+		return sideA + sideB + sideC;
 	}
 }
