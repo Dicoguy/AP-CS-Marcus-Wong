@@ -2,22 +2,22 @@ package textExcel;
 
 
 public class SpreadsheetLocation implements Location{
-	private int rows = 20;
-	private int cols = 12; 
-	
+	int  row; //number 
+	char col; //letter
 	private String cellName;
     @Override
-    public int getRow(){
-        return rows;
+    public int getCol(){    	
+        return col - 65;
     }
-
+    
     @Override
-    public int getCol() {
-        return cols;
+    public int getRow() {
+        return row - 1;
     }
     
     public SpreadsheetLocation(String cellName) {
         this.cellName = cellName;
+        this.row =  Integer.parseInt(cellName.substring(1));
+        this.col =  this.cellName.charAt(0);
     }
-
 }

@@ -7,7 +7,7 @@ package textExcel;
 public class Spreadsheet implements Grid{
 	
 
-	int[][] spreadsheet = new int[12][20];
+	EmptyCell[][] spreadsheet = new EmptyCell[12][20];
 	public Spreadsheet() {
 		
 		for(int row = 0; row < spreadsheet.length; row++) {
@@ -23,22 +23,22 @@ public class Spreadsheet implements Grid{
 
 	@Override
 	public int getRows(){
-		return spreadsheet.length;
+		return spreadsheet[0].length;
 	}
 
 	@Override
 	public int getCols(){
-		return  spreadsheet[0].length;
+		return  spreadsheet.length;
 	}
 
 	@Override
 	public Cell getCell(Location loc){
-		return null;
+		return spreadsheet[loc.getRow()][loc.getCol()];
 	}
 
 	@Override
 	public String getGridText(){
-		return "pee";
+		String grid = "";
 	}
 
 }

@@ -15,6 +15,6 @@ public class TextExcel{
 	    	if(inputCommand.equals("quit")) {
         		break;
         	}
-	    }while(true)
+	    }while(true);
 	}
 }
