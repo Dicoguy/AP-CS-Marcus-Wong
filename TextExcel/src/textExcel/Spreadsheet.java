@@ -5,40 +5,40 @@ package textExcel;
 // Update this file with your own code.
 
 public class Spreadsheet implements Grid{
-
-	private int rows;
-	private int cols;
 	
+
+	int[][] spreadsheet = new int[12][20];
 	public Spreadsheet() {
-		int[][] spreadsheet = new int[rows][cols];
+		
+		for(int row = 0; row < spreadsheet.length; row++) {
+			for(int col = 0; col < spreadsheet[row].length; col++){
+				spreadsheet[row][col] = new EmptyCell(); 
+			}
+		}
 	}
 	@Override
 	public String processCommand(String command){
-		return null;
+		return "";
 	}
 
 	@Override
 	public int getRows(){
-		return rows;
+		return spreadsheet.length;
 	}
 
 	@Override
 	public int getCols(){
-		return cols;
+		return  spreadsheet[0].length;
 	}
 
 	@Override
-	public Cell getCell(Location loc)
-	{
-		// TODO Auto-generated method stub
+	public Cell getCell(Location loc){
 		return null;
 	}
 
 	@Override
-	public String getGridText()
-	{
-		// TODO Auto-generated method stub
-		return null;
+	public String getGridText(){
+		return "pee";
 	}
 
 }

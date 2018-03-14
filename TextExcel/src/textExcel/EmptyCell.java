@@ -3,15 +3,14 @@ package textExcel;
 public class EmptyCell implements Cell {
 
 	@Override
-	public String abbreviatedCellText() {
-		// TODO Auto-generated method stub
-		return null;
+	public String abbreviatedCellText() { // text for spreadsheet cell display, must be exactly length 10
+		
+		return "          ";
 	}
 
 	@Override
-	public String fullCellText() {
-		// TODO Auto-generated method stub
-		return null;
+	public String fullCellText() { // text for individual cell inspection, not truncated or padded
+		return "";
 	}
 
 }
