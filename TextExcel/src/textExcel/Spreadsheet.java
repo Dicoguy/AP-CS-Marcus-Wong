@@ -30,7 +30,7 @@ public class Spreadsheet implements Grid{
 	public int getCols(){
 		return  spreadsheet.length;
 	}
-
+	
 	@Override
 	public Cell getCell(Location loc){
 		return spreadsheet[loc.getRow()][loc.getCol()];
@@ -39,6 +39,11 @@ public class Spreadsheet implements Grid{
 	@Override
 	public String getGridText(){
 		String grid = "";
+		for(char letter = 'A'; letter <= 'L'; letter++) {
+			grid += String.format("|%c          %n," +  letter + 'A');
+		}
+		
+		for(int i = 0; i <= 20; i++)
 	}
 
 }
