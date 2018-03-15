@@ -40,10 +40,19 @@ public class Spreadsheet implements Grid{
 	public String getGridText(){
 		String grid = "";
 		for(char letter = 'A'; letter <= 'L'; letter++) {
-			grid += String.format("|%c          %n," +  letter + 'A');
+			grid += "   |" + letter + "         ";
 		}
 		
-		for(int i = 0; i <= 20; i++)
+		for(int i = 1; i <= 20; i++) {
+			if(i >= 10) {
+				grid += "\n" + i + " |";
+			}else {
+				grid += "\n" + i + "  |";
+			}
+			for(int j = 0; j <= 11; j++) {
+				grid += "             |";
+			}
+		}
+		return grid;
 	}
-
 }
