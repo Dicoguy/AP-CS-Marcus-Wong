@@ -9,7 +9,8 @@ public class TextExcel{
 
 	public static void main(String[] args){
 	    Scanner input = new Scanner(System.in);
-	    
+	    TestsALL.Helper th = new TestsALL.Helper();
+	    System.out.println(th.getText());
 	    do {
 	    	String inputCommand = input.nextLine();
 	    	if(inputCommand.equals("quit")) {
