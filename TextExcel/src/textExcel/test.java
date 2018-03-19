@@ -7,23 +7,20 @@ public class test {
 			if(letter == 'L') {
 				grid += "   |" + letter + "         |";
 			}else {
-				grid += "   |" + letter + "     ";
+				grid += "   |" + letter + "      ";
 			}
 		}
-		
-		
 		for(int i = 1; i <= 20; i++) {
 			if(i >= 10) {
 				grid += "\n" + i + " |";        
 			}else {
 				grid += "\n" + i + "  |";
+			}	
+			for(int j = 0; j <= 11; j++) {	
+				grid += "          |";
 			}
-			
-			for(int j = 0; j <= 11; j++) {
-				grid += "         |";
-			}
+			grid += "\n";
 		}
-		
-		System.out.println(grid);
+		System.out.print(grid);
 	}
 }

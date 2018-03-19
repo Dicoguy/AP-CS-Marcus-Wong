@@ -18,7 +18,17 @@ public class Spreadsheet implements Grid{
 	}
 	@Override
 	public String processCommand(String command){
-		return "";
+		if(command.contains("=")) {
+			
+		}else if(command.contains("clear") && (command.length() == 8) || (command.length() == 9) ) {
+			
+		}else if(command.contains("clear") && (command.length() == 5)) {
+			
+		}else if(command.contains("=")) {
+			
+		}else {
+			
+		}
 	}
 
 	@Override
@@ -40,19 +50,23 @@ public class Spreadsheet implements Grid{
 	public String getGridText(){
 		String grid = "";
 		for(char letter = 'A'; letter <= 'L'; letter++) {
-			grid += "   |" + letter + "         ";
+			if(letter == 'L') {
+				grid += "   |" + letter + "         |";
+			}else {
+				grid += "   |" + letter + "      ";
+			}
 		}
-		
 		for(int i = 1; i <= 20; i++) {
 			if(i >= 10) {
-				grid += "\n" + i + " |";
+				grid += "\n" + i + " |";        
 			}else {
 				grid += "\n" + i + "  |";
 			}
 			for(int j = 0; j <= 11; j++) {
-				grid += "             |";
+				grid += "          |";
 			}
 		}
+		grid += "\n";
 		return grid;
 	}
 }
