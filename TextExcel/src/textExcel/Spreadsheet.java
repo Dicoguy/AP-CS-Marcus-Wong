@@ -17,23 +17,28 @@ public class Spreadsheet implements Grid{
 	
 	@Override
 	public String processCommand(String command){
-		SpreadsheetLocation location = new SpreadsheetLocation(command);
+
+		String output = "";
 		if(command.contains("=")) {
-			
+			SpreadsheetLocation location = new SpreadsheetLocation(command);
+			spreadsheet[location.getRow()][location.getCol()] = new TextCell(command.split(" ", 3)[2]);
+			output  = getGridText();
 		}else if(command.contains("clear") && (command.length() == 8) || (command.length() == 9) ) {
-			
+			SpreadsheetLocation location = new SpreadsheetLocation(command);
+			spreadsheet[location.getRow()][location.getCol()] = new EmptyCell();
+			output = getGridText();
 		}else if(command.contains("clear") && (command.length() == 5)) {
 			for(int row = 0; row < spreadsheet.length; row++) {
 				for(int col = 0; col < spreadsheet[row].length; col++){
 					spreadsheet[row][col] = new EmptyCell(); 
 				}
 			}
-			
-		}else if(command.contains("=")) {
-			spreadsheet[getRow()][getCol]
-		}else {
-			
+			output += getGridText();			
+		}else { //if just a single coordinate
+			SpreadsheetLocation location = new SpreadsheetLocation(command);
+			output += getCell(location).fullCellText();
 		}
+		return output;
 	}
 
 	@Override
@@ -68,7 +73,7 @@ public class Spreadsheet implements Grid{
 				grid += "\n" + i + "  |";
 			}
 			for(int j = 0; j <= 11; j++) {
-				grid += "          |";
+				grid += spreadsheet[i][j].abbreviatedCellText() + "|";
 			}
 		}
 		grid += "\n";

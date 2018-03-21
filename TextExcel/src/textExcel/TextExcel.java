@@ -9,10 +9,10 @@ public class TextExcel{
 
 	public static void main(String[] args){
 	    Scanner input = new Scanner(System.in);
-	    TestsALL.Helper th = new TestsALL.Helper();
-	    System.out.println(th.getText());
+	    Spreadsheet jonatan = new Spreadsheet();
 	    do {
 	    	String inputCommand = input.nextLine();
+	    	jonatan.processCommand(inputCommand);
 	    	if(inputCommand.equals("quit")) {
         		break;
         	}

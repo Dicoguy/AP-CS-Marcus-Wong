@@ -1,7 +1,7 @@
 package textExcel;
 
 public class test {
-	public static void main(String[] args){
+			
 		String grid = "";
 		for(char letter = 'A'; letter <= 'L'; letter++) {
 			if(letter == 'L') {
@@ -17,7 +17,7 @@ public class test {
 				grid += "\n" + i + "  |";
 			}	
 			for(int j = 0; j <= 11; j++) {	
-				grid += "          |";
+				grid += spreadsheet[i][j].abbreviatedCellText() + "|";
 			}
 			grid += "\n";
 		}
