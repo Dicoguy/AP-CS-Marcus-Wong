@@ -9,13 +9,16 @@ public class TextExcel{
 
 	public static void main(String[] args){
 	    Scanner input = new Scanner(System.in);
+	    boolean quit = false;
 	    Spreadsheet jonatan = new Spreadsheet();
 	    do {
 	    	String inputCommand = input.nextLine();
-	    	jonatan.processCommand(inputCommand);
 	    	if(inputCommand.equals("quit")) {
-        		break;
+        		quit = true;
+        	}else {
+    	    	System.out.println(jonatan.processCommand(inputCommand));
         	}
-	    }while(true);
+	    	
+	    }while(!quit);
 	}
 }

@@ -7,7 +7,7 @@ public class TextCell implements Cell{
 	public String abbreviatedCellText() {
 		
 		if(cellString.length() > 10) {
-			return cellString.substring(0,9);
+			return cellString.substring(0,10);
 		}else {
 			for(int i = cellString.length(); i < 10; i++) {
 				notCellString += " ";

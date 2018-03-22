@@ -6,7 +6,7 @@ package textExcel;
 
 public class Spreadsheet implements Grid{
 
-	Cell[][] spreadsheet = new Cell[12][20];
+	private Cell[][] spreadsheet = new Cell[12][20];
 	public Spreadsheet() {
 		for(int row = 0; row < spreadsheet.length; row++) {
 			for(int col = 0; col < spreadsheet[row].length; col++){
@@ -19,10 +19,10 @@ public class Spreadsheet implements Grid{
 	public String processCommand(String command){
 
 		String output = "";
-		if(command.contains("=")) {
-			SpreadsheetLocation location = new SpreadsheetLocation(command);
+		if(command.contains("=")) { //cell assignment
+			SpreadsheetLocation location = new SpreadsheetLocation(command.split(" ", 3)[0]);
 			spreadsheet[location.getRow()][location.getCol()] = new TextCell(command.split(" ", 3)[2]);
-			output  = getGridText();
+			output = getGridText();
 		}else if(command.contains("clear") && (command.length() == 8) || (command.length() == 9) ) {
 			SpreadsheetLocation location = new SpreadsheetLocation(command);
 			spreadsheet[location.getRow()][location.getCol()] = new EmptyCell();
@@ -39,6 +39,8 @@ public class Spreadsheet implements Grid{
 			output += getCell(location).fullCellText();
 		}
 		return output;
+		
+	/*	return getGridText();
 	}
 
 	@Override
@@ -66,6 +68,7 @@ public class Spreadsheet implements Grid{
 				grid += "   |" + letter + "      ";
 			}
 		}
+		/*
 		for(int i = 1; i <= 20; i++) {
 			if(i >= 10) {
 				grid += "\n" + i + " |";        
@@ -75,7 +78,7 @@ public class Spreadsheet implements Grid{
 			for(int j = 0; j <= 11; j++) {
 				grid += spreadsheet[i][j].abbreviatedCellText() + "|";
 			}
-		}
+		}*/
 		grid += "\n";
 		return grid;
 	}
