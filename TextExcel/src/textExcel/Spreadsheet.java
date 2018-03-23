@@ -40,7 +40,6 @@ public class Spreadsheet implements Grid{
 		}
 		return output;
 		
-	/*	return getGridText();
 	}
 
 	@Override
@@ -68,17 +67,20 @@ public class Spreadsheet implements Grid{
 				grid += "   |" + letter + "      ";
 			}
 		}
-		/*
-		for(int i = 1; i <= 20; i++) {
-			if(i >= 10) {
-				grid += "\n" + i + " |";        
+		
+		
+		for(int i = 1; i < spreadsheet.length; i++) {
+			if(i < 10) {
+				grid += "\n" + i + "  |";        
 			}else {
-				grid += "\n" + i + "  |";
+				grid += "\n" + i + " |";
 			}
-			for(int j = 0; j <= 11; j++) {
+			
+			for(int j = 0; j < 12; j++) {
+			
 				grid += spreadsheet[i][j].abbreviatedCellText() + "|";
 			}
-		}*/
+		}
 		grid += "\n";
 		return grid;
 	}
