@@ -69,7 +69,7 @@ public class Spreadsheet implements Grid{
 		}
 		
 		
-		for(int i = 1; i < spreadsheet.length; i++) {
+		for(int i = 0; i < 20; i++) {
 			if(i < 10) {
 				grid += "\n" + i + "  |";        
 			}else {
@@ -77,8 +77,7 @@ public class Spreadsheet implements Grid{
 			}
 			
 			for(int j = 0; j < 12; j++) {
-			
-				grid += spreadsheet[i][j].abbreviatedCellText() + "|";
+				grid += spreadsheet[j][i].abbreviatedCellText() + "|";
 			}
 		}
 		grid += "\n";
