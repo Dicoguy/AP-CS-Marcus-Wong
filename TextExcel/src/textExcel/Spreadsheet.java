@@ -22,9 +22,10 @@ public class Spreadsheet implements Grid{
 		if(command.contains("=")) { //cell assignment
 			SpreadsheetLocation location = new SpreadsheetLocation(command.split(" ", 3)[0]);
 			spreadsheet[location.getRow()][location.getCol()] = new TextCell(command.split(" ", 3)[2]);
+			//System.out.println("The specific text of cell in processcommand" + command.split(" ", 3)[2]);
 			output = getGridText();
 		}else if(command.contains("clear") && (command.length() == 8) || (command.length() == 9) ) {
-			SpreadsheetLocation location = new SpreadsheetLocation(command);
+			SpreadsheetLocation location = new SpreadsheetLocation(command.split(" ", 3)[1]);
 			spreadsheet[location.getRow()][location.getCol()] = new EmptyCell();
 			output = getGridText();
 		}else if(command.contains("clear") && (command.length() == 5)) {
@@ -70,10 +71,11 @@ public class Spreadsheet implements Grid{
 		
 		
 		for(int i = 0; i < 20; i++) {
-			if(i < 10) {
-				grid += "\n" + i + "  |";        
+			if(i < 9) {
+				
+				grid += "\n" + (i + 1) + "  |";        
 			}else {
-				grid += "\n" + i + " |";
+				grid += "\n" + (i + 1) + " |";
 			}
 			
 			for(int j = 0; j < 12; j++) {
