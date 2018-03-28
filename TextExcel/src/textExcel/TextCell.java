@@ -25,8 +25,9 @@ public class TextCell implements Cell{
 			}else{
 				returnString = cellStringTwo;
 			}
-	
-			for(int i = returnString.length(); i < 10; i++) {
+			
+			int numSpaces = 10 - returnString.length();
+			for(int i = 0; i < numSpaces; i++) {
 				returnString += " ";
 			}
 		}

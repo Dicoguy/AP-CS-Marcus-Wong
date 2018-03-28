@@ -230,6 +230,7 @@ public class TestsALL
                     !emptyCell.getClass().equals(stringCell.getClass()));
         }
 
+        
         @Test
         public void testClear()
         {
