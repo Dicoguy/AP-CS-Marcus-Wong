@@ -184,7 +184,7 @@ public class TestsALL
                 }
         }
 
-        @Test
+        @Test1
         public void testEmptyGridText()
         {
             Helper helper = new Helper();
