@@ -7,7 +7,7 @@ public class SpreadsheetLocation implements Location{
 	private String cellName;
     @Override
     public int getCol(){    	
-        return Character.toUpperCase(col) - 65;
+        return Character.toUpperCase(col) - 'A';
     }
     
     @Override

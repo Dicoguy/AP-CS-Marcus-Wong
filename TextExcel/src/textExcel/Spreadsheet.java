@@ -17,9 +17,6 @@ public class Spreadsheet implements Grid{
 	
 	@Override
 	public String processCommand(String command){
-		if(command.equals("")) {
-			return "";
-		}else {
 			String output = "";
 			if(command.contains("=")) { //cell assignment
 				SpreadsheetLocation location = new SpreadsheetLocation(command.split(" ", 3)[0]);
@@ -45,22 +42,21 @@ public class Spreadsheet implements Grid{
 			
 		}
 		
-	}
+	
 
 	@Override
 	public int getRows(){
-		return spreadsheet[0].length;
+		return spreadsheet[0].length - 1;
 	}
 
 	@Override
 	public int getCols(){
-		return  spreadsheet.length;
+		return  spreadsheet.length - 'A';
 	}
 	
 	@Override
 	public Cell getCell(Location loc){
-		Cell location = spreadsheet[loc.getRow()][loc.getCol()];
-		return location;
+		return spreadsheet[loc.getRow()][loc.getCol()];
 	}
 
 	@Override
