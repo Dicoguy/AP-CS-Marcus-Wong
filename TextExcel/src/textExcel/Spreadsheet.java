@@ -21,7 +21,6 @@ public class Spreadsheet implements Grid{
 			if(command.contains("=")) { //cell assignment
 				SpreadsheetLocation location = new SpreadsheetLocation(command.split(" ", 3)[0]);
 				spreadsheet[location.getRow()][location.getCol()] = new TextCell(command.split(" ", 3)[2]);
-				//System.out.println("The specific text of cell in processcommand" + command.split(" ", 3)[2]);
 				output = getGridText();
 			}else if(command.contains("clear") && (command.length() == 8) || (command.length() == 9) ) {
 				SpreadsheetLocation location = new SpreadsheetLocation(command.split(" ", 3)[1]);

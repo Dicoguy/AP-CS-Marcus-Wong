@@ -1,9 +1,9 @@
 package textExcel;
 
-public class RealCell implements Cell{
+public abstract class RealCell implements Cell{
 	String numberString;
 	@Override
-	public String abbreviatedCellText() {
+	/*public String abbreviatedCellText() {
 		String stringed = numberString.substring(1, numberString.length() - 1);
 		if(stringed.length() > 10) {
 			stringed = stringed.substring(0,10);
@@ -14,14 +14,13 @@ public class RealCell implements Cell{
 		}
 		return stringed;
 	}
-
-	@Override
-	public String fullCellText() {
-		return numberString;
-	}
+	*/
 	
-	public double getDoubleValue(String input) {
-		return Double.parseDouble(input);
+	public abstract String abbreviatedCellText();
+	public abstract String fullCellText();
+	
+	public double getDoubleValue() {
+		return Double.parseDouble(numberString);
 	}
 	
 	public RealCell(String input) {
