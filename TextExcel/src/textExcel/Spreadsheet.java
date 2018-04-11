@@ -42,7 +42,7 @@ public class Spreadsheet implements Grid{
 		}
 		
 	
-
+	
 	@Override
 	public int getRows(){
 		return spreadsheet[0].length - 1;

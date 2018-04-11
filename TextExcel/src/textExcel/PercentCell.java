@@ -15,8 +15,7 @@ public class PercentCell extends RealCell {
 
 	@Override
 	public String fullCellText() {
-		
-		return getDoubleValue();
+		return (getDoubleValue() + "");
 	}
 
 }
