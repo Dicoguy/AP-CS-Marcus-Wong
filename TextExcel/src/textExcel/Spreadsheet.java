@@ -18,22 +18,32 @@ public class Spreadsheet implements Grid{
 	@Override
 	public String processCommand(String command){
 			String output = "";
+			String cellName = command.split(" ", 3)[0];
 			if(command.contains("=")) { //cell assignment
-				SpreadsheetLocation location = new SpreadsheetLocation(command.split(" ", 3)[0]);
-				spreadsheet[location.getRow()][location.getCol()] = new TextCell(command.split(" ", 3)[2]);
-				output = getGridText();
-			}else if(command.contains("clear") && (command.length() == 8) || (command.length() == 9) ) {
+				String value = command.split(" ", 3)[2];
+				SpreadsheetLocation location = new SpreadsheetLocation(cellName);
+				if(value.contains("\"")) {
+					spreadsheet[location.getRow()][location.getCol()] = new TextCell(value);
+					output = getGridText();
+				}else if(value.contains("%")) {
+					spreadsheet[location.getRow()][location.getCol()] = new PercentCell(value);
+					output = getGridText();
+				}else {
+					spreadsheet[location.getRow()][location.getCol()] = new ValueCell(value);
+					output = getGridText();
+				}
+			}else if(command.contains("clear") && (command.length() == 8) || (command.length() == 9) ) { //clearing
 				SpreadsheetLocation location = new SpreadsheetLocation(command.split(" ", 3)[1]);
 				spreadsheet[location.getRow()][location.getCol()] = new EmptyCell();
 				output = getGridText();
-			}else if((command.toLowerCase()).contains("clear") && (command.length() == 5)) {
+			}else if((command.toLowerCase()).contains("clear") && (command.length() == 5)) { //clear all
 				for(int row = 0; row < spreadsheet.length; row++) {
 					for(int col = 0; col < spreadsheet[row].length; col++){
 						spreadsheet[row][col] = new EmptyCell(); 
 					}
 				}
 				output = getGridText();			
-			}else { //if just a single coordinate
+			}else { //returns specific coordinate
 				SpreadsheetLocation location = new SpreadsheetLocation(command);
 				output = getCell(location).fullCellText();
 			}

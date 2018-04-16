@@ -2,6 +2,7 @@ package textExcel;
 
 public abstract class RealCell implements Cell{
 	String numberString;
+	String fullString;
 	@Override
 	/*public String abbreviatedCellText() {
 		String stringed = numberString.substring(1, numberString.length() - 1);
@@ -19,12 +20,16 @@ public abstract class RealCell implements Cell{
 	public abstract String abbreviatedCellText();
 	public abstract String fullCellText();
 	
+	public String getValue() {
+		return numberString;
+	}
 	public double getDoubleValue() {
 		return Double.parseDouble(numberString);
 	}
 	
 	public RealCell(String input) {
 		numberString = input;
+		fullString = input;
 	}
 
 }

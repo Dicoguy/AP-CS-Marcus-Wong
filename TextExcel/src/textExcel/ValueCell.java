@@ -10,23 +10,23 @@ public class ValueCell extends RealCell {
 	public double getDoubleValue() {
 		return super.getDoubleValue();
 	}
+	
 	public String abbreviatedCellText() {
-		String returnString = "";
-		String stringed = numberString.substring(1, numberString.length() - 1);
 		if((getDoubleValue() + "").length() > 10) {
-			numberString.substring(0,10);
+			return (getDoubleValue() + "").substring(0,10);
 		}else {
-			for(int i = stringed.length(); i < 10; i++) {
-				 numberString += " ";
+			String spaces = "";
+			for(int i = 0; i < 10 - (getDoubleValue() + "").length(); i++) {
+				 spaces += " ";
 			}
+			return (getDoubleValue()) + spaces;
 		}
-		returnString += numberString;
-		return returnString;
-		
 	}
+	
+	
 	@Override
 	public String fullCellText() {
-		return numberString;
+		return fullString;
 	}
 	
 }
