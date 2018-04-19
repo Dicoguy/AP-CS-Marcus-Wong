@@ -7,4 +7,18 @@ public class FormulaCell extends RealCell{
 	
 	}
 
+	@Override
+	public String abbreviatedCellText() {
+		return null;
+	}
+	
+	public double getDoubleValue() {
+		
+	}
+
+	@Override
+	public String fullCellText() {
+		return numberString;
+	}
+
 }
