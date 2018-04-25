@@ -23,6 +23,7 @@ public abstract class RealCell implements Cell{
 	public String getValue() {
 		return numberString;
 	}
+	
 	public double getDoubleValue() {
 		return Double.parseDouble(numberString);
 	}

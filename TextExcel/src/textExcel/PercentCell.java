@@ -32,7 +32,7 @@ public class PercentCell extends RealCell {
 	}
 	
 	public double getDoubleValue() {
-		return Double.parseDouble(getValue().substring(0, getValue().length() - 1)) * .01;
+		return Double.parseDouble(numberString.substring(0, numberString.length() - 1)) * .01;
 	}
 	
 }

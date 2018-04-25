@@ -28,6 +28,9 @@ public class Spreadsheet implements Grid{
 				}else if(value.contains("%")) {
 					spreadsheet[location.getRow()][location.getCol()] = new PercentCell(value);
 					output = getGridText();
+				}else if(value.contains(("("))) {
+					spreadsheet[location.getRow()][location.getCol()] = new FormulaCell(value, this);
+					output = getGridText();
 				}else {
 					spreadsheet[location.getRow()][location.getCol()] = new ValueCell(value);
 					output = getGridText();
@@ -38,7 +41,7 @@ public class Spreadsheet implements Grid{
 				output = getGridText();
 			}else if((command.toLowerCase()).contains("clear") && (command.length() == 5)) { //clear all
 				for(int row = 0; row < spreadsheet.length; row++) {
-					for(int col = 0; col < spreadsheet[row].length; col++){
+					for(int col = 0; col < spreadsheet[row].length; col++){// add a method
 						spreadsheet[row][col] = new EmptyCell(); 
 					}
 				}

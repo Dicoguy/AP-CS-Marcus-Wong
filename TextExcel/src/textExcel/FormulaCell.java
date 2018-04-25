@@ -1,10 +1,14 @@
 package textExcel;
-import java.util.ArrayList;
-public class FormulaCell extends RealCell{
 
-	public FormulaCell(String input) {
-		super(input);
+public class FormulaCell extends RealCell{
 	
+	String[] splitFormula = (getValue().substring(2,getValue().length()-2)).split(" ");
+	//String[] splitForm = new String[4];
+	
+	public Spreadsheet spreadsheet; 
+	public FormulaCell(String input, Spreadsheet spreadsheet) {
+		super(input);
+		this.spreadsheet = spreadsheet;
 	}
 
 	@Override
@@ -21,14 +25,22 @@ public class FormulaCell extends RealCell{
 	}
 	
 	public double getDoubleValue() {
-		String[] splitFormula = (numberString.substring(2,numberString.length()-2)).split(" ");
+		//String[] splitFormula = (getValue().substring(2,getValue().length()-2)).split(" ");
 		//takes an assignment such as ( 5 - 6 ) and turns it into an array of 5, "-" , 6
-		ArrayList<Double> doubles = new ArrayList<Double>();
-		ArrayList<String> strings = new ArrayList<String>();
+		//takes an assignment such as ( A5 - E6 ) and turns it into an array of 5, "-" , 6
+		double result = Double.parseDouble(splitFormula[0]);
+		for(int i = 1; i <= splitFormula.length - 2; i += 2) {
+			if(Character.isDigit(splitFormula[i].charAt(0))){
+				
+				
+			}
+			result = doOperation(result, splitFormula[i], Double.parseDouble(splitFormula[i+1]));
+		}
 		
+		return result;
 		
 	}
-	public double operation(double numOne, String operand, double numTwo) {
+	public double doOperation(double numOne, String operand, double numTwo) {
 		double result = 0;
 		if(operand.equals("-")) {
 			result = numOne - numTwo; 
@@ -44,7 +56,7 @@ public class FormulaCell extends RealCell{
 
 	@Override
 	public String fullCellText() {
-		return numberString;
+		return getValue();
 	}
 
 }
