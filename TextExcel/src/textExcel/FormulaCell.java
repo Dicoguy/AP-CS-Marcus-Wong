@@ -86,6 +86,7 @@ public class FormulaCell extends RealCell{
 	public String fullCellText() {
 		return getValue();
 	}
+	
 	public double doOperation(double numOne, String operand, double numTwo) {
 		double result = 0;
 		if(operand.equals("-")) {
