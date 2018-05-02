@@ -27,6 +27,7 @@ public class FormulaCell extends RealCell{
 		//String[] splitFormula = (getValue().substring(2,getValue().length()-2)).split(" ");
 		//takes an assignment such as ( 5 - 6 ) and turns it into an array of 5, "-" , 6
 		//takes an assignment such as ( A5 - E6 ) and turns it into an array of 5, "-" , 6
+		
 		if(getValue().toUpperCase().contains("SUM")) {
 			String[] cellLocations = splitFormula[1].split("-");
 			return sum(cellLocations[0],cellLocations[1]);
@@ -35,17 +36,21 @@ public class FormulaCell extends RealCell{
 			return avg(cellLocations[0],cellLocations[1]);
 		}else {
 			//double result = Double.parseDouble(splitFormula[0]);
-			for(int i = 1; i <= splitFormula.length; i ++) {
+			for(int i = 0; i <= splitFormula.length-1; i ++) {
+				
 				if(Character.isLetter(splitFormula[i].charAt(0))){ 
 					//purpose of loop is to replace cell locations with
-					//associated values			
+					//associated values		
 					Location cell = new SpreadsheetLocation(splitFormula[i]);
 					splitFormula[i] = ((RealCell) spreadsheet[cell.getRow()][cell.getCol()]).getDoubleValue() + "";
 				}
 			}
+			if(splitFormula.length <= 1) {
+				return Double.parseDouble(splitFormula[0]);
+			}
 			
-			//ensures value is returned if only one operation, 
-			double result = doOperation(Double.parseDouble(splitFormula[0]), splitFormula[1],Double. parseDouble(splitFormula[2]));
+			//the initial value if only one operation 
+			double result = doOperation(Double.parseDouble(splitFormula[0]), splitFormula[1], Double. parseDouble(splitFormula[2]));
 			//moves through the splitFormula array with all doubles and does all the operations
 			for (int i = 2; i < splitFormula.length - 1; i += 2) {
 				result = doOperation(result, splitFormula[i+1], Double.parseDouble(splitFormula[i+2]));
