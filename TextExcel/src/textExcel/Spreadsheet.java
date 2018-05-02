@@ -29,7 +29,7 @@ public class Spreadsheet implements Grid{
 					spreadsheet[location.getRow()][location.getCol()] = new PercentCell(value);
 					output = getGridText();
 				}else if(value.contains(("("))) {
-					spreadsheet[location.getRow()][location.getCol()] = new FormulaCell(value, this);
+					spreadsheet[location.getRow()][location.getCol()] = new FormulaCell(value, spreadsheet);
 					output = getGridText();
 				}else {
 					spreadsheet[location.getRow()][location.getCol()] = new ValueCell(value);
