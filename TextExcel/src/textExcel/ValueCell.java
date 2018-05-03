@@ -26,7 +26,7 @@ public class ValueCell extends RealCell {
 	
 	@Override
 	public String fullCellText() {
-		return fullString;
+		return numberString;
 	}
 	
 }
