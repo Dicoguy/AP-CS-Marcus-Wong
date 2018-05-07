@@ -23,6 +23,18 @@ public class FormulaCell extends RealCell{
 		}
 	}
 	
+	public double doMath() {
+		
+		//the initial value if only one operation 
+		double result = doOperation(Double.parseDouble(splitFormula[0]), splitFormula[1], Double. parseDouble(splitFormula[2]));
+		
+		//moves through the splitFormula array with all doubles and does all the operations and stuff
+		for (int i = 2; i < splitFormula.length - 1; i += 2) {
+			result = doOperation(result, splitFormula[i+1], Double.parseDouble(splitFormula[i+2]));
+		}
+		
+		return result;
+	}
 	public double getDoubleValue() {
 		
 		if(getValue().toUpperCase().contains("SUM")) {
@@ -44,7 +56,7 @@ public class FormulaCell extends RealCell{
 					splitFormula[i] = ((RealCell) spreadsheet[cell.getRow()][cell.getCol()]).getDoubleValue() + "";
 				}
 			}
-			//ensure that if formula is like ( 1 ) than it will return just that
+			//ensure that if formula is something like ( 1 ) than it will return just that
 			if(splitFormula.length <= 1) {
 				return Double.parseDouble(splitFormula[0]);
 			}
@@ -52,12 +64,8 @@ public class FormulaCell extends RealCell{
 			//the initial value if only one operation 
 			double result = doOperation(Double.parseDouble(splitFormula[0]), splitFormula[1], Double. parseDouble(splitFormula[2]));
 			
-			//moves through the splitFormula array with all doubles and does all the operations and stuff
-			for (int i = 2; i < splitFormula.length - 1; i += 2) {
-				result = doOperation(result, splitFormula[i+1], Double.parseDouble(splitFormula[i+2]));
-			}
 			
-			return result;
+			return doMath();
 		}
 		
 		

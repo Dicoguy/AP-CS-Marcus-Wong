@@ -55,6 +55,7 @@ public class Spreadsheet implements Grid{
 				SpreadsheetLocation location = new SpreadsheetLocation(command);
 				output = getCell(location).fullCellText();
 			}
+			
 			return output;
 			
 		}
