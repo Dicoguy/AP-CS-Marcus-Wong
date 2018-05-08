@@ -52,8 +52,8 @@ public class Spreadsheet implements Grid{
 				output = getGridText();			
 			//returns specific coordinate value
 			}else { 
-				SpreadsheetLocation location = new SpreadsheetLocation(command);
-				output = getCell(location).fullCellText();
+				SpreadsheetLocation location = new SpreadsheetLocation(cellName);
+				output =  spreadsheet[location.getRow()][location.getCol()].fullCellText();
 			}
 			
 			return output;

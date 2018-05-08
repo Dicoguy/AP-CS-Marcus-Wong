@@ -2,7 +2,7 @@ package textExcel;
 
 public class FormulaCell extends RealCell{
 	
-	String[] splitFormula = (getValue().substring(2,getValue().length()-2)).split(" ");
+	
 	public Cell[][] spreadsheet; //essentially the original spreadsheet
 	
 	public FormulaCell(String input, Cell[][] spreadsheet) {
@@ -23,32 +23,22 @@ public class FormulaCell extends RealCell{
 		}
 	}
 	
-	public double doMath() {
-		
-		//the initial value if only one operation 
-		double result = doOperation(Double.parseDouble(splitFormula[0]), splitFormula[1], Double. parseDouble(splitFormula[2]));
-		
-		//moves through the splitFormula array with all doubles and does all the operations and stuff
-		for (int i = 2; i < splitFormula.length - 1; i += 2) {
-			result = doOperation(result, splitFormula[i+1], Double.parseDouble(splitFormula[i+2]));
-		}
-		
-		return result;
-	}
+	
+	
 	public double getDoubleValue() {
+		String[] splitFormula = (getValue().substring(2,getValue().length()-2)).split(" ");
 		
-		if(getValue().toUpperCase().contains("SUM")) {
+		if(getValue().toUpperCase().contains("SUM")) { //does the SUM operation
 			String[] cellLocations = splitFormula[1].split("-");
 			return sum(cellLocations[0],cellLocations[1]);
 			
-		}else if(getValue().toUpperCase().contains("AVG")) {
+		}else if(getValue().toUpperCase().contains("AVG")) { //does the AVG operation
 			String[] cellLocations = splitFormula[1].split("-");
 			return avg(cellLocations[0],cellLocations[1]);
 			
-		}else {
-			//double result = Double.parseDouble(splitFormula[0]);
+		}else { //does all the operations and stuff
+			
 			for(int i = 0; i <= splitFormula.length-1; i ++) {
-				
 				if(Character.isLetter(splitFormula[i].charAt(0))){ 
 					//purpose of loop is to replace cell locations with
 					//associated values		
@@ -64,8 +54,12 @@ public class FormulaCell extends RealCell{
 			//the initial value if only one operation 
 			double result = doOperation(Double.parseDouble(splitFormula[0]), splitFormula[1], Double. parseDouble(splitFormula[2]));
 			
+			//moves through the splitFormula array with all doubles and does all the operations and stuff
+			for (int i = 2; i < splitFormula.length - 1; i += 2) {
+				result = doOperation(result, splitFormula[i+1], Double.parseDouble(splitFormula[i+2]));
+			}
 			
-			return doMath();
+			return result;
 		}
 		
 		
@@ -87,7 +81,7 @@ public class FormulaCell extends RealCell{
 		
 	}
 		
-	public double avg(String startString, String endString) {
+	public double avg(String startString, String endString) { //returns the average of cells
 		SpreadsheetLocation startCell = new SpreadsheetLocation(startString);
 		SpreadsheetLocation endCell = new SpreadsheetLocation(endString);
 		//try and get the number of cells to divide by
