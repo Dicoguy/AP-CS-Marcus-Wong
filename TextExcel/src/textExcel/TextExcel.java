@@ -10,13 +10,13 @@ public class TextExcel{
 	public static void main(String[] args){
 	    Scanner input = new Scanner(System.in);
 	    boolean quit = false;
-	    Spreadsheet jonatan = new Spreadsheet();
+	    Spreadsheet SuperDuperSpreadsheet = new Spreadsheet();
 	    do {
 	    	String inputCommand = input.nextLine();
 	    	if(inputCommand.equals("quit")) {
         		quit = true;
         	}else {
-    	    	System.out.println(jonatan.processCommand(inputCommand));
+    	    	System.out.println(SuperDuperSpreadsheet.processCommand(inputCommand));
         	}
 	    	
 	    }while(!quit);

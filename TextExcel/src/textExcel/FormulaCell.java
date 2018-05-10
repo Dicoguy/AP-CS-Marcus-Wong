@@ -26,6 +26,7 @@ public class FormulaCell extends RealCell{
 	
 	
 	public double getDoubleValue() {
+		//The parsed formula split into it's component parts
 		String[] splitFormula = (getValue().substring(2,getValue().length()-2)).split(" ");
 		
 		if(getValue().toUpperCase().contains("SUM")) { //does the SUM operation
@@ -84,7 +85,7 @@ public class FormulaCell extends RealCell{
 	public double avg(String startString, String endString) { //returns the average of cells
 		SpreadsheetLocation startCell = new SpreadsheetLocation(startString);
 		SpreadsheetLocation endCell = new SpreadsheetLocation(endString);
-		//try and get the number of cells to divide by
+		//gets the number of cells needed to divide by
 		int numCells = ((endCell.getCol() + 1) - startCell.getCol()) * ((endCell.getRow() + 1) - startCell.getRow());
 		return sum(startString, endString) / (double) numCells;
 	}
@@ -92,7 +93,7 @@ public class FormulaCell extends RealCell{
 	public String fullCellText() {
 		return getValue();
 	}
-	//Does operation
+	//Does given operation
 	public double doOperation(double numOne, String operand, double numTwo) {
 		double result = 0;
 		if(operand.equals("-")) {

@@ -4,12 +4,11 @@ public class PercentCell extends RealCell {
 
 	public PercentCell(String input) {
 		super(input);
-		
 	}
 
 	@Override
 	public String abbreviatedCellText() {
-		String truncated = "";
+		String truncated = ""; //if the value is 29.3, trunacted takes off the .3
 		String returnString = "";
 		if(getValue().contains(".")) {
 			truncated = getValue().substring(0,getValue().indexOf(".")) + "%";

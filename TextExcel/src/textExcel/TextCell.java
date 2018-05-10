@@ -2,10 +2,16 @@ package textExcel;
 
 public class TextCell implements Cell{
 	String cellString;
+	
+	public TextCell(String cellString) {
+		this.cellString = cellString;
+	}
+	
 	@Override
 	public String abbreviatedCellText() {
 		//Takes out the quotes
 		String stringed = cellString.substring(1, cellString.length() - 1); 
+		
 		//quotes than parsed accordingly
 		if(stringed.length() > 10) {
 			stringed = stringed.substring(0,10);
@@ -22,8 +28,6 @@ public class TextCell implements Cell{
 		return cellString;
 	}
 	
-	public TextCell(String cellString) {
-		this.cellString = cellString;
-	}
+	
 
 }
